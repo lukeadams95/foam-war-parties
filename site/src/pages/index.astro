@@ -1,0 +1,575 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Step text for the How It Works tabs (DIY Rental / Full Service).
+const steps = {
+  "diy": [
+    "Build your package: choose blasters, barriers and add-ons.",
+    "Pick your date and reserve with 50% down.",
+    "Pick up free in Forsyth or have it delivered.",
+    "Battle! Return the gear within 24 hours."
+  ],
+  "full": [
+    "Choose your package based on your number of participants.",
+    "Pick your date and book online.",
+    "We arrive, set up the battlefield and run the games.",
+    "You enjoy the party, and we handle cleanup."
+  ]
+};
+---
+<Base title="Foam War Parties | Foam Blaster Parties in Branson & Southwest Missouri" description="Mobile foam blaster parties from Forsyth, Missouri. DIY equipment rentals from $54 or full-service parties from $350, serving Branson, Springfield and Southwest Missouri." active={"home"}>
+<!-- HERO -->
+<section id="home" style="position:relative;background:#182B49;color:#fff;padding:20px 0 48px;overflow:hidden">
+<img src="/images/hero-foam-battle.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.32">
+<div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 50% 38%,rgba(14,26,46,.92) 0%,rgba(14,26,46,.6) 55%,rgba(14,26,46,0) 100%)">
+</div>
+<div style="position:relative;max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 var(--padx);text-align:center">
+<div style="display:inline-block;background:#0875D1;color:#fff;font-weight:700;font-size:14px;letter-spacing:.04em;padding:8px 16px;border-radius:999px;text-transform:uppercase;margin-top:0">Mobile Foam Blaster Parties · Forsyth, Branson &amp; Southwest Missouri</div>
+<h1 style="font-family:'Archivo Black',sans-serif;font-size:clamp(40px,8vw,84px);line-height:1;margin:20px 0 16px;text-transform:uppercase;text-wrap:balance;text-shadow:0 3px 6px rgba(10,20,38,.6)">From DIY Party to <span style="color:#FF7518;text-shadow:0 0 6px rgba(255,117,24,.28),0 0 12px rgba(255,117,24,.16)">Full Service!</span></h1>
+<p style="font-size:clamp(18px,2.4vw,24px);max-width:720px;margin:0 auto 36px;line-height:1.4;text-wrap:pretty;text-shadow:0 2px 6px rgba(10,20,38,.85),0 0 16px rgba(10,20,38,.7)">Whether you want to throw it yourself or have us run it for you, have the ultimate Foam War Party!</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px;text-align:left;max-width:900px;margin:0 auto">
+<div style="position:relative;background:#fff;color:#182B49;border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:10px;border-top:8px solid #0875D1;margin-top:14px">
+<div style="position:absolute;left:0;right:0;bottom:calc(100% - 1px);height:26px;overflow:hidden;display:flex;justify-content:center;pointer-events:none">
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#0875D1;margin-top:12px;">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#0875D1;margin-top:4px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#0875D1;margin-top:9px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#0875D1;margin-top:0px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#0875D1;margin-top:7px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#0875D1;margin-top:1px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#0875D1;margin-top:10px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#0875D1;margin-top:4px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#0875D1;margin-top:12px;margin-left:-11px">
+</div>
+</div>
+<div style="font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase">DIY Equipment Rentals</div>
+<div style="font-family:'Archivo Black',sans-serif;font-size:44px;color:#0875D1;line-height:1"><span style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;color:#182B49;display:block;margin-bottom:4px">Starting at</span>$54</div>
+<p style="margin:0;font-size:18px;line-height:1.45;flex:1">Rent the equipment, organize your own games and create your own battlefield.</p>
+<a href="/build-your-party/?type=diy" style="background:#FF7518;color:#182B49;font-weight:800;text-decoration:none;text-align:center;padding:16px 28px;border-radius:14px;font-size:18px;text-transform:uppercase">Build Your DIY Party</a>
+</div>
+<div style="position:relative;background:#fff;color:#182B49;border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:10px;border-top:8px solid #FF7518;margin-top:14px">
+<div style="position:absolute;left:0;right:0;bottom:calc(100% - 1px);height:26px;overflow:hidden;display:flex;justify-content:center;pointer-events:none">
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;margin-top:12px;">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;margin-top:4px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;margin-top:9px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;margin-top:0px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;margin-top:7px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;margin-top:1px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;margin-top:10px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;margin-top:4px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;margin-top:12px;margin-left:-11px">
+</div>
+</div>
+<div style="font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase">Full-Service Parties</div>
+<div style="font-family:'Archivo Black',sans-serif;font-size:44px;color:#0875D1;line-height:1"><span style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;color:#182B49;display:block;margin-bottom:4px">Starting at</span>$350</div>
+<p style="margin:0;font-size:18px;line-height:1.45;flex:1">We deliver the equipment, set up the battlefield, referee the games and handle cleanup.</p>
+<a href="/build-your-party/?type=full" style="background:#FF7518;color:#182B49;font-weight:800;text-decoration:none;text-align:center;padding:16px 28px;border-radius:14px;font-size:18px;text-transform:uppercase">Book Full Service</a>
+</div>
+</div>
+<p style="margin:24px 0 0;font-size:18px">Questions? <a href="tel:+14175592347" style="color:#fff;font-weight:700">Call or text (417) 559-2347</a></p>
+</div>
+</section>
+<!-- TRUST -->
+<section style="background:#0875D1;color:#fff;padding:28px 0">
+<div style="max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 var(--padx);display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px">
+<div style="display:flex;align-items:center;gap:14px;font-weight:700;font-size:18px;line-height:1.3">
+<div style="flex:none;width:52px;height:52px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0875D1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3h-3.5a2 2 0 0 1-1.6-.8L12 14l-1.9 1.2a2 2 0 0 1-1.6.8H5a3 3 0 0 1-3-3z"></path><path d="M2 11H1M22 11h1"></path><circle cx="7.5" cy="11.5" r="1.2"></circle><circle cx="16.5" cy="11.5" r="1.2"></circle></svg>
+</div>
+<div>Goggles + 80 foam rounds with every blaster</div>
+</div>
+<div style="display:flex;align-items:center;gap:14px;font-weight:700;font-size:18px;line-height:1.3">
+<div style="flex:none;width:52px;height:52px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0875D1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V11a3 3 0 0 1 3-3h0a3 3 0 0 1 3 3v9M9 20V11a3 3 0 0 1 3-3h0a3 3 0 0 1 3 3v9M15 20V11a3 3 0 0 1 3-3h0a3 3 0 0 1 3 3v9M2 20h20"></path></svg>
+</div>
+<div>Inflatable battlefield barriers</div>
+</div>
+<div style="display:flex;align-items:center;gap:14px;font-weight:700;font-size:18px;line-height:1.3">
+<div style="flex:none;width:52px;height:52px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0875D1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.800 12 21 12 21z"></path><circle cx="12" cy="9.500" r="2.500"></circle></svg>
+</div>
+<div>We come to you</div>
+</div>
+<div style="display:flex;align-items:center;gap:14px;font-weight:700;font-size:18px;line-height:1.3">
+<div style="flex:none;width:52px;height:52px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0875D1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"></rect><path d="M3 10h18M7 15h3"></path></svg>
+</div>
+<div>Easy online booking &amp; secure payment</div>
+</div>
+</div>
+</section>
+<!-- TWO WAYS -->
+<section id="services" style="background:#F3F4F6;padding:72px 0">
+<div style="max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 var(--padx)">
+<div style="text-align:center;margin-bottom:40px">
+<div style="text-align:center;margin-bottom:14px">
+<div style="display:inline-block;background:#0875D1;color:#fff;font-weight:700;font-size:14px;letter-spacing:.04em;padding:8px 16px;border-radius:999px;text-transform:uppercase">Two Ways to Play</div>
+</div>
+<h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(34px,6vw,60px);text-transform:uppercase;margin:0 0 12px;line-height:1">Pick Your <span style="color:#FF7518">Battle</span></h2>
+<p style="font-size:18px;max-width:640px;margin:0 auto;line-height:1.4;text-wrap:pretty">Run the party yourself with our gear, or sit back and let our referees handle everything.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px;align-items:stretch">
+<div style="position:relative;margin-top:26px;background:#fff;border-radius:28px;padding:32px;display:flex;flex-direction:column;gap:16px;border-top:10px solid #0875D1">
+<div style="position:absolute;left:0;right:0;bottom:calc(100% - 1px);height:26px;overflow:hidden;display:flex;justify-content:center;pointer-events:none">
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#0875D1;margin-top:12px;">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#0875D1;margin-top:4px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#0875D1;margin-top:9px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#0875D1;margin-top:0px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#0875D1;margin-top:7px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#0875D1;margin-top:1px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#0875D1;margin-top:10px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#0875D1;margin-top:4px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#0875D1;margin-top:12px;margin-left:-11px">
+</div>
+</div>
+<h3 style="font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;margin:0">DIY Equipment Rentals</h3>
+<div style="background:#F3F4F6;border-radius:18px;padding:20px">
+<div style="font-weight:700;font-size:18px">Basic Blaster Package</div>
+<div style="font-family:'Archivo Black',sans-serif;font-size:56px;color:#0875D1;line-height:1.1">$54</div>
+</div>
+<ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font-size:18px;line-height:1.4">
+<li>12 foam-ball blasters</li>
+<li>12 pairs of protective goggles</li>
+<li>960 foam rounds (80 per blaster)</li>
+<li>24-hour rental</li>
+<li>Free pickup in Forsyth</li>
+</ul>
+<p style="margin:0;font-size:18px;line-height:1.45;background:#0875D1;color:#fff;padding:14px 16px;border-radius:14px"><b>Need more?</b> Add blasters for $4 each (each one comes with goggles and 80 rounds).</p>
+<p style="margin:0;font-size:18px;line-height:1.5"><b>Add-ons:</b> Inflatable barriers $15 each · Boundary cones $0.75 each · Whistles $1.50 each</p>
+<p style="margin:0;font-size:18px">Delivery available, starting at $50.</p>
+<a href="/build-your-party/?type=diy" style="margin-top:auto;background:#FF7518;color:#182B49;font-weight:800;text-decoration:none;text-align:center;padding:16px 28px;border-radius:14px;font-size:18px;text-transform:uppercase">Build Your DIY Party</a>
+</div>
+<div style="position:relative;margin-top:26px;background:#182B49;color:#fff;border-radius:28px;padding:32px;display:flex;flex-direction:column;gap:16px;border-top:10px solid #FF7518">
+<div style="position:absolute;left:0;right:0;bottom:calc(100% - 1px);height:26px;overflow:hidden;display:flex;justify-content:center;pointer-events:none">
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;margin-top:12px;">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;margin-top:4px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;margin-top:9px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;margin-top:0px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;margin-top:7px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;margin-top:1px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;margin-top:10px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;margin-top:4px;margin-left:-11px">
+</div>
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;margin-top:12px;margin-left:-11px">
+</div>
+</div>
+<h3 style="font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;margin:0">Full-Service Parties</h3>
+<p style="margin:0;font-size:18px;line-height:1.45">Every full-service party includes 90 minutes of refereed gameplay, blasters, goggles, foam ammo, specialty blasters, inflatable barriers, setup and cleanup.</p>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="background:#fff;color:#182B49;border-radius:18px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+<div>
+<div style="font-weight:800;font-size:19px">Standard Battle</div>
+<div style="font-size:16px">up to 12 participants</div>
+</div>
+<div style="font-family:'Archivo Black',sans-serif;font-size:36px;color:#0875D1">$350</div>
+</div>
+<div style="background:#fff;color:#182B49;border-radius:18px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+<div>
+<div style="font-weight:800;font-size:19px">Ultimate Battle</div>
+<div style="font-size:16px">13–24 participants</div>
+</div>
+<div style="font-family:'Archivo Black',sans-serif;font-size:36px;color:#0875D1">$450</div>
+</div>
+<div style="background:#fff;color:#182B49;border-radius:18px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+<div>
+<div style="font-weight:800;font-size:19px">Mega Battle</div>
+<div style="font-size:16px">25+ participants</div>
+</div>
+<div style="font-family:'Archivo Black',sans-serif;font-size:28px;color:#0875D1">$450 <span style="font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:#182B49">+ $12 per participant over 24</span>
+</div>
+</div>
+</div>
+<a href="/build-your-party/?type=full" style="margin-top:auto;background:#FF7518;color:#182B49;font-weight:800;text-decoration:none;text-align:center;padding:16px 28px;border-radius:14px;font-size:18px;text-transform:uppercase">Book Full Service</a>
+</div>
+</div>
+</div>
+</section>
+<!-- HOW IT WORKS -->
+<section id="how-it-works" data-tabs={JSON.stringify(steps)} style="padding:72px 0;background:#fff">
+<div style="max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 var(--padx)">
+<div style="text-align:center;margin-bottom:14px">
+<div style="display:inline-block;background:#0875D1;color:#fff;font-weight:700;font-size:14px;letter-spacing:.04em;padding:8px 16px;border-radius:999px;text-transform:uppercase">Simple Steps</div>
+</div>
+<h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(34px,6vw,60px);text-transform:uppercase;margin:0 0 28px;line-height:1;text-align:center">How It <span style="color:#FF7518">Works</span></h2>
+<div style="display:flex;justify-content:center;gap:10px;margin-bottom:32px;flex-wrap:wrap">
+<button type="button" data-tab-btn="diy" style="cursor:pointer;border:0;font-family:inherit;font-weight:800;font-size:18px;padding:16px 28px;border-radius:999px;background:#0875D1;color:#fff">DIY Rental</button>
+<button type="button" data-tab-btn="full" style="cursor:pointer;border:0;font-family:inherit;font-weight:800;font-size:18px;padding:16px 28px;border-radius:999px;background:#F3F4F6;color:#182B49">Full Service</button>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:20px">
+<div style="position:relative;overflow:hidden;background:#F3F4F6;color:#182B49;border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:18px;min-height:260px">
+<div style="position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:#dbe9f7">
+</div>
+<div style="position:absolute;left:-50px;bottom:-50px;width:130px;height:130px;border-radius:50%;background:#dbe9f7">
+</div>
+<div style="position:absolute;right:40px;bottom:-30px;width:80px;height:80px;border-radius:50%;background:#dbe9f7">
+</div>
+<div style="position:absolute;right:20px;top:120px;width:38px;height:38px;border-radius:50%;background:#dbe9f7">
+</div>
+<div style="position:relative;width:68px;height:68px;border-radius:50%;background:#0875D1;display:flex;align-items:center;justify-content:center"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 4V3h6v1M9 11l2 2 4-4M9 17h6"></path></svg>
+</div>
+<div style="position:relative;font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;color:#0875D1">Step 1</div>
+<div style="position:relative;font-size:18px;line-height:1.5;text-wrap:pretty" data-step="0">Build your package: choose blasters, barriers and add-ons.</div>
+</div>
+<div style="position:relative;overflow:hidden;background:#F3F4F6;color:#182B49;border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:18px;min-height:260px">
+<div style="position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:#dbe9f7">
+</div>
+<div style="position:absolute;left:-50px;bottom:-50px;width:130px;height:130px;border-radius:50%;background:#dbe9f7">
+</div>
+<div style="position:absolute;right:40px;bottom:-30px;width:80px;height:80px;border-radius:50%;background:#dbe9f7">
+</div>
+<div style="position:absolute;right:20px;top:120px;width:38px;height:38px;border-radius:50%;background:#dbe9f7">
+</div>
+<div style="position:relative;width:68px;height:68px;border-radius:50%;background:#0875D1;display:flex;align-items:center;justify-content:center"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+</div>
+<div style="position:relative;font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;color:#0875D1">Step 2</div>
+<div style="position:relative;font-size:18px;line-height:1.5;text-wrap:pretty" data-step="1">Pick your date and reserve with 50% down.</div>
+</div>
+<div style="position:relative;overflow:hidden;background:#182B49;color:#fff;border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:18px;min-height:260px">
+<div style="position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.07)">
+</div>
+<div style="position:absolute;left:-50px;bottom:-50px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.07)">
+</div>
+<div style="position:absolute;right:40px;bottom:-30px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.07)">
+</div>
+<div style="position:absolute;right:20px;top:120px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.07)">
+</div>
+<div style="position:relative;width:68px;height:68px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#182B49" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
+</div>
+<div style="position:relative;font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;color:#FF7518">Step 3</div>
+<div style="position:relative;font-size:18px;line-height:1.5;text-wrap:pretty" data-step="2">Pick up free in Forsyth or have it delivered.</div>
+</div>
+<div style="position:relative;overflow:hidden;background:#F3F4F6;color:#182B49;border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:18px;min-height:260px">
+<div style="position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:#dbe9f7">
+</div>
+<div style="position:absolute;left:-50px;bottom:-50px;width:130px;height:130px;border-radius:50%;background:#dbe9f7">
+</div>
+<div style="position:absolute;right:40px;bottom:-30px;width:80px;height:80px;border-radius:50%;background:#dbe9f7">
+</div>
+<div style="position:absolute;right:20px;top:120px;width:38px;height:38px;border-radius:50%;background:#dbe9f7">
+</div>
+<div style="position:relative;width:68px;height:68px;border-radius:50%;background:#0875D1;display:flex;align-items:center;justify-content:center"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h13l-2.5 4L18 12H5"></path></svg>
+</div>
+<div style="position:relative;font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;color:#0875D1">Step 4</div>
+<div style="position:relative;font-size:18px;line-height:1.5;text-wrap:pretty" data-step="3">Battle! Return the gear within 24 hours.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- EQUIPMENT -->
+<section style="background:#F3F4F6;color:#182B49;padding:72px 0 clamp(100px,10vw,140px)">
+<div style="max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 var(--padx)">
+<div style="text-align:center;margin-bottom:14px">
+<div style="display:inline-block;background:#0875D1;color:#fff;font-weight:700;font-size:14px;letter-spacing:.04em;padding:8px 16px;border-radius:999px;text-transform:uppercase">Equipment</div>
+</div>
+<h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(34px,6vw,60px);text-transform:uppercase;margin:0 0 14px;line-height:1;text-align:center;text-wrap:balance">Battle-Ready <span style="color:#FF7518">Gear</span></h2>
+<p style="font-size:18px;max-width:720px;margin:0 auto 40px;line-height:1.5;text-align:center;text-wrap:pretty">Every rental starts with the basics. Add barriers, cones and whistles to build your battlefield.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px">
+<div style="background:#fff;border-radius:24px;padding:20px;display:flex;flex-direction:row;align-items:center;gap:16px;box-shadow:0 8px 24px rgba(10,30,60,.10)">
+<div style="flex:none;width:56px;height:56px;border-radius:50%;background:#FF7518;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="15" height="5" rx="2"></rect><path d="M18 10.500h4M6 14l-1 6h4l1-6M10 9V6h4v3"></path></svg>
+</div>
+<div style="min-width:0;display:flex;flex-direction:column;gap:4px">
+<div style="font-weight:800;font-size:22px;line-height:1.2;color:#182B49">Foam-Ball Blasters</div>
+<div style="font-size:18px;line-height:1.4">Standard blasters come with every rental. Upgrade to specialty blasters for $1 or $2 each.</div>
+</div>
+</div>
+<div style="background:#fff;border-radius:24px;padding:20px;display:flex;flex-direction:row;align-items:center;gap:16px;box-shadow:0 8px 24px rgba(10,30,60,.10)">
+<div style="flex:none;width:56px;height:56px;border-radius:50%;background:#FF7518;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3h-3.500a2 2 0 0 1-1.600-.8L12 14l-1.900 1.200a2 2 0 0 1-1.600.8H5a3 3 0 0 1-3-3z"></path><circle cx="7.500" cy="11.500" r="1.200"></circle><circle cx="16.500" cy="11.500" r="1.200"></circle></svg>
+</div>
+<div style="min-width:0;display:flex;flex-direction:column;gap:4px">
+<div style="font-weight:800;font-size:22px;line-height:1.2;color:#182B49">Protective Goggles</div>
+<div style="font-size:18px;line-height:1.4">One pair for every blaster, included.</div>
+</div>
+</div>
+<div style="background:#fff;border-radius:24px;padding:20px;display:flex;flex-direction:row;align-items:center;gap:16px;box-shadow:0 8px 24px rgba(10,30,60,.10)">
+<div style="flex:none;width:56px;height:56px;border-radius:50%;background:#FF7518;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"></circle><path d="M8 10.500h.01M12 8.500h.01M16 10.500h.01M9.500 14.500h.01M14.500 14.500h.01"></path></svg>
+</div>
+<div style="min-width:0;display:flex;flex-direction:column;gap:4px">
+<div style="font-weight:800;font-size:22px;line-height:1.2;color:#182B49">Foam Rounds</div>
+<div style="font-size:18px;line-height:1.4">80 soft, round foam rounds with every blaster, included.</div>
+</div>
+</div>
+<div style="background:#fff;border-radius:24px;padding:20px;display:flex;flex-direction:row;align-items:center;gap:16px;box-shadow:0 8px 24px rgba(10,30,60,.10)">
+<div style="flex:none;width:56px;height:56px;border-radius:50%;background:#FF7518;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V11a3 3 0 0 1 3-3h0a3 3 0 0 1 3 3v9M9 20V11a3 3 0 0 1 3-3h0a3 3 0 0 1 3 3v9M15 20V11a3 3 0 0 1 3-3h0a3 3 0 0 1 3 3v9M2 20h20"></path></svg>
+</div>
+<div style="min-width:0;display:flex;flex-direction:column;gap:4px">
+<div style="font-weight:800;font-size:22px;line-height:1.2;color:#182B49">Inflatable Barriers</div>
+<div style="font-size:18px;line-height:1.4">Build your battlefield for $15 each.</div>
+</div>
+</div>
+<div style="background:#fff;border-radius:24px;padding:20px;display:flex;flex-direction:row;align-items:center;gap:16px;box-shadow:0 8px 24px rgba(10,30,60,.10)">
+<div style="flex:none;width:56px;height:56px;border-radius:50%;background:#FF7518;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l6 16H6z"></path><path d="M4 21h16M9 12h6"></path></svg>
+</div>
+<div style="min-width:0;display:flex;flex-direction:column;gap:4px">
+<div style="font-weight:800;font-size:22px;line-height:1.2;color:#182B49">Boundary Cones</div>
+<div style="font-size:18px;line-height:1.4">Mark your game zone for $0.75 each.</div>
+</div>
+</div>
+<div style="background:#fff;border-radius:24px;padding:20px;display:flex;flex-direction:row;align-items:center;gap:16px;box-shadow:0 8px 24px rgba(10,30,60,.10)">
+<div style="flex:none;width:56px;height:56px;border-radius:50%;background:#FF7518;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="14" r="5"></circle><path d="M13.500 11L21 9v4l-5 1M9 9V5"></path></svg>
+</div>
+<div style="min-width:0;display:flex;flex-direction:column;gap:4px">
+<div style="font-weight:800;font-size:22px;line-height:1.2;color:#182B49">Whistles</div>
+<div style="font-size:18px;line-height:1.4">Referee your own games for $1.50 each, yours to keep.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PERFECT FOR -->
+<section style="color:#fff;padding:clamp(100px,10vw,140px) 0;position:relative;z-index:1">
+<div style="position:absolute;left:0;right:0;top:calc(-1 * clamp(40px,5vw,84px));bottom:calc(-1 * clamp(40px,5vw,84px));background-color:#0875D1;background-image:radial-gradient(circle,rgba(255,255,255,.16) 0 7px,transparent 8px) 0 0/90px 90px,radial-gradient(circle,rgba(255,255,255,.10) 0 12px,transparent 13px) 45px 45px/130px 130px,radial-gradient(circle,rgba(255,255,255,.12) 0 4px,transparent 5px) 20px 60px/60px 60px;overflow:hidden;pointer-events:none;-webkit-mask:url(/images/cloud-mask-up.png) top/100% clamp(40px,5vw,84px) no-repeat,url(/images/cloud-mask.png) bottom/100% clamp(40px,5vw,84px) no-repeat,linear-gradient(#000,#000) center/100% calc(100% - 2 * clamp(40px,5vw,84px) + 8px) no-repeat;mask:url(/images/cloud-mask-up.png) top/100% clamp(40px,5vw,84px) no-repeat,url(/images/cloud-mask.png) bottom/100% clamp(40px,5vw,84px) no-repeat,linear-gradient(#000,#000) center/100% calc(100% - 2 * clamp(40px,5vw,84px) + 8px) no-repeat"><svg viewBox="0 0 250 120" style="position:absolute;pointer-events:none;width:360px;left:-70px;top:calc(30px + clamp(40px,5vw,84px));opacity:.09;transform:rotate(-14deg)" fill="#fff"><rect x="70" y="32" width="160" height="16" rx="8"></rect><rect x="218" y="27" width="24" height="26" rx="5"></rect><rect x="14" y="42" width="140" height="34" rx="13"></rect><rect x="72" y="22" width="60" height="10" rx="4"></rect><rect x="34" y="70" width="22" height="42" rx="8" transform="rotate(-12 45 90)"></rect><circle cx="108" cy="84" r="19"></circle><rect x="150" y="70" width="8" height="18" rx="4"></rect></svg><svg viewBox="0 0 250 120" style="position:absolute;pointer-events:none;width:420px;right:-90px;top:42%;opacity:.08;transform:rotate(10deg) scaleX(-1)" fill="#fff"><rect x="70" y="32" width="160" height="16" rx="8"></rect><rect x="218" y="27" width="24" height="26" rx="5"></rect><rect x="14" y="42" width="140" height="34" rx="13"></rect><rect x="72" y="22" width="60" height="10" rx="4"></rect><rect x="34" y="70" width="22" height="42" rx="8" transform="rotate(-12 45 90)"></rect><circle cx="108" cy="84" r="19"></circle><rect x="150" y="70" width="8" height="18" rx="4"></rect></svg><svg viewBox="0 0 250 120" style="position:absolute;pointer-events:none;width:300px;left:12%;bottom:calc(clamp(40px,5vw,84px) * .3);opacity:.07;transform:rotate(-6deg)" fill="#fff"><rect x="70" y="32" width="160" height="16" rx="8"></rect><rect x="218" y="27" width="24" height="26" rx="5"></rect><rect x="14" y="42" width="140" height="34" rx="13"></rect><rect x="72" y="22" width="60" height="10" rx="4"></rect><rect x="34" y="70" width="22" height="42" rx="8" transform="rotate(-12 45 90)"></rect><circle cx="108" cy="84" r="19"></circle><rect x="150" y="70" width="8" height="18" rx="4"></rect></svg><svg viewBox="0 0 250 120" style="position:absolute;pointer-events:none;width:340px;right:-60px;top:calc(110px + clamp(40px,5vw,84px));opacity:.08;transform:rotate(18deg) scaleX(-1)" fill="#fff"><rect x="70" y="32" width="160" height="16" rx="8"></rect><rect x="218" y="27" width="24" height="26" rx="5"></rect><rect x="14" y="42" width="140" height="34" rx="13"></rect><rect x="72" y="22" width="60" height="10" rx="4"></rect><rect x="34" y="70" width="22" height="42" rx="8" transform="rotate(-12 45 90)"></rect><circle cx="108" cy="84" r="19"></circle><rect x="150" y="70" width="8" height="18" rx="4"></rect></svg><svg viewBox="0 0 250 120" style="position:absolute;pointer-events:none;width:300px;right:6%;bottom:calc(60px + clamp(40px,5vw,84px));opacity:.07;transform:rotate(-10deg) scaleX(-1)" fill="#fff"><rect x="70" y="32" width="160" height="16" rx="8"></rect><rect x="218" y="27" width="24" height="26" rx="5"></rect><rect x="14" y="42" width="140" height="34" rx="13"></rect><rect x="72" y="22" width="60" height="10" rx="4"></rect><rect x="34" y="70" width="22" height="42" rx="8" transform="rotate(-12 45 90)"></rect><circle cx="108" cy="84" r="19"></circle><rect x="150" y="70" width="8" height="18" rx="4"></rect></svg><svg viewBox="0 0 250 120" style="position:absolute;pointer-events:none;width:260px;left:40%;top:calc(60px + clamp(40px,5vw,84px));opacity:.06;transform:rotate(8deg)" fill="#fff"><rect x="70" y="32" width="160" height="16" rx="8"></rect><rect x="218" y="27" width="24" height="26" rx="5"></rect><rect x="14" y="42" width="140" height="34" rx="13"></rect><rect x="72" y="22" width="60" height="10" rx="4"></rect><rect x="34" y="70" width="22" height="42" rx="8" transform="rotate(-12 45 90)"></rect><circle cx="108" cy="84" r="19"></circle><rect x="150" y="70" width="8" height="18" rx="4"></rect></svg><svg viewBox="0 0 250 120" style="position:absolute;pointer-events:none;width:280px;left:-60px;top:62%;opacity:.07;transform:rotate(12deg)" fill="#fff"><rect x="70" y="32" width="160" height="16" rx="8"></rect><rect x="218" y="27" width="24" height="26" rx="5"></rect><rect x="14" y="42" width="140" height="34" rx="13"></rect><rect x="72" y="22" width="60" height="10" rx="4"></rect><rect x="34" y="70" width="22" height="42" rx="8" transform="rotate(-12 45 90)"></rect><circle cx="108" cy="84" r="19"></circle><rect x="150" y="70" width="8" height="18" rx="4"></rect></svg>
+</div>
+<div style="max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 var(--padx);position:relative">
+<div style="text-align:center;margin-bottom:14px">
+<div style="display:inline-block;background:#fff;color:#0875D1;font-weight:700;font-size:14px;letter-spacing:.04em;padding:8px 16px;border-radius:999px;text-transform:uppercase">Perfect For</div>
+</div>
+<h2 style="text-shadow:0 3px 6px rgba(10,20,38,.45);font-family:'Archivo Black',sans-serif;font-size:clamp(34px,6vw,60px);text-transform:uppercase;margin:0 0 14px;line-height:1;text-align:center;text-wrap:balance">Epic Foam Battles <span style="color:#FF7518">for Every Occasion</span></h2>
+<p style="font-size:18px;line-height:1.4;margin:0 auto 44px;text-align:center;max-width:620px;color:#fff">Any group, any age, any celebration: we bring the battlefield to you.</p>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px">
+<div style="background:#fff;border-radius:24px;padding:16px 20px;display:flex;flex-direction:row;align-items:center;gap:16px;box-shadow:0 8px 24px rgba(10,30,60,.18);border-bottom:6px solid transparent;transition:transform .2s,border-color .2s" class="hv-lift">
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21h16v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2z"></path><path d="M4 17c2 1.5 3 1.500 4 0s2-1.500 4 0 3 1.500 4 0 2-1.500 4 0M12 13V9M12 9c-1-1-1-2 0-3 1 1 1 2 0 3z"></path></svg>
+</div>
+<div style="min-width:0;display:flex;flex-direction:column;gap:2px">
+<div style="font-weight:800;font-size:22px;color:#182B49;line-height:1.2">Kids' Birthday Parties</div>
+<div style="font-size:18px;line-height:1.45;color:#182B49">The birthday party they'll be talking about all year.</div>
+</div>
+</div>
+<div style="background:#fff;border-radius:24px;padding:16px 20px;display:flex;flex-direction:row;align-items:center;gap:16px;box-shadow:0 8px 24px rgba(10,30,60,.18);border-bottom:6px solid transparent;transition:transform .2s,border-color .2s" class="hv-lift">
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2.500"></circle><circle cx="16" cy="8" r="2.500"></circle><circle cx="12" cy="13" r="2.500"></circle><path d="M3 20c0-2.500 2-4 5-4M21 20c0-2.500-2-4-5-4M8 21c0-2.500 1.800-4 4-4s4 1.500 4 4"></path></svg>
+</div>
+<div style="min-width:0;display:flex;flex-direction:column;gap:2px">
+<div style="font-weight:800;font-size:22px;color:#182B49;line-height:1.2">Church Youth Events</div>
+<div style="font-size:18px;line-height:1.45;color:#182B49">Get your youth group laughing, moving and playing as a team.</div>
+</div>
+</div>
+<div style="background:#fff;border-radius:24px;padding:16px 20px;display:flex;flex-direction:row;align-items:center;gap:16px;box-shadow:0 8px 24px rgba(10,30,60,.18);border-bottom:6px solid transparent;transition:transform .2s,border-color .2s" class="hv-lift">
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-5 9 5-9 5z"></path><path d="M7 12.500V17c0 1.500 2.200 3 5 3s5-1.500 5-3v-4.500M21 10v6"></path></svg>
+</div>
+<div style="min-width:0;display:flex;flex-direction:column;gap:2px">
+<div style="font-weight:800;font-size:22px;color:#182B49;line-height:1.2">School Events</div>
+<div style="font-size:18px;line-height:1.45;color:#182B49">A fun, safe activity for field days, festivals and class rewards.</div>
+</div>
+</div>
+<div style="background:#fff;border-radius:24px;padding:16px 20px;display:flex;flex-direction:row;align-items:center;gap:16px;box-shadow:0 8px 24px rgba(10,30,60,.18);border-bottom:6px solid transparent;transition:transform .2s,border-color .2s" class="hv-lift">
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"></rect><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18M11 13v2h2v-2"></path></svg>
+</div>
+<div style="min-width:0;display:flex;flex-direction:column;gap:2px">
+<div style="font-weight:800;font-size:22px;color:#182B49;line-height:1.2">Corporate Team Building</div>
+<div style="font-size:18px;line-height:1.45;color:#182B49">Build teamwork and friendly competition outside the office.</div>
+</div>
+</div>
+<div style="background:#fff;border-radius:24px;padding:16px 20px;display:flex;flex-direction:row;align-items:center;gap:16px;box-shadow:0 8px 24px rgba(10,30,60,.18);border-bottom:6px solid transparent;transition:transform .2s,border-color .2s" class="hv-lift">
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path><path d="M12 17c-2-1.500-3-2.500-3-4a1.800 1.800 0 0 1 3-1 1.800 1.800 0 0 1 3 1c0 1.500-1 2.500-3 4z"></path></svg>
+</div>
+<div style="min-width:0;display:flex;flex-direction:column;gap:2px">
+<div style="font-weight:800;font-size:22px;color:#182B49;line-height:1.2">Family Reunions</div>
+<div style="font-size:18px;line-height:1.45;color:#182B49">Get every generation in on the action.</div>
+</div>
+</div>
+<div style="background:#fff;border-radius:24px;padding:16px 20px;display:flex;flex-direction:row;align-items:center;gap:16px;box-shadow:0 8px 24px rgba(10,30,60,.18);border-bottom:6px solid transparent;transition:transform .2s,border-color .2s" class="hv-lift">
+<div style="flex:none;width:46px;height:46px;border-radius:50%;background:#FF7518;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"></path><path d="M5 4h12l-2 4 2 4H5"></path><path d="M9 4v8M13 4v8"></path></svg>
+</div>
+<div style="min-width:0;display:flex;flex-direction:column;gap:2px">
+<div style="font-weight:800;font-size:22px;color:#182B49;line-height:1.2">Community Celebrations</div>
+<div style="font-size:18px;line-height:1.45;color:#182B49">An easy crowd-pleaser for festivals, fairs and neighborhood events.</div>
+</div>
+</div>
+</div>
+<div style="text-align:center;margin-top:44px"><a href="/build-your-party/" style="display:inline-block;background:#FF7518;color:#182B49;font-weight:800;text-decoration:none;padding:16px 28px;border-radius:14px;font-size:18px;text-transform:uppercase">Book Your Party</a>
+</div>
+</div>
+</section>
+<!-- SAFETY -->
+<section style="background:#fff;padding:72px 0">
+<div style="max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 var(--padx);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px;align-items:center">
+<div>
+<div style="display:inline-block;background:#0875D1;color:#fff;font-weight:700;font-size:14px;letter-spacing:.04em;padding:8px 16px;border-radius:999px;text-transform:uppercase;margin-bottom:14px">Safety First</div>
+<h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(34px,6vw,60px);text-transform:uppercase;margin:0 0 18px;line-height:1">Big Fun, <span style="color:#FF7518">Played Safe</span></h2>
+<p style="font-size:18px;line-height:1.55;margin:0;text-wrap:pretty">Every blaster shoots soft, round foam balls, and protective goggles are included for every player. Our full-service parties are run by referees who keep the games fair, organized and safe. DIY renters get easy-to-follow safety rules with every rental.</p>
+</div>
+<img src="/images/safety-foam-blaster.jpg" alt="Foam blaster with round foam balls" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:28px;display:block">
+</div>
+</section>
+<!-- GALLERY -->
+<section style="position:relative;background:#182B49;color:#fff;padding:clamp(100px,10vw,140px) 0">
+<div style="position:absolute;left:0;right:0;bottom:100%;margin-bottom:-1px;height:clamp(40px,5vw,84px);background:#182B49;z-index:2;-webkit-mask:url(/images/cloud-mask-up.png) center bottom/100% 100% no-repeat;mask:url(/images/cloud-mask-up.png) center bottom/100% 100% no-repeat">
+</div>
+<div style="position:absolute;left:0;right:0;top:100%;margin-top:-1px;height:clamp(40px,5vw,84px);background:#182B49;z-index:2;-webkit-mask:url(/images/cloud-mask.png) center top/100% 100% no-repeat;mask:url(/images/cloud-mask.png) center top/100% 100% no-repeat">
+</div>
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none"><svg viewBox="0 0 250 120" style="position:absolute;pointer-events:none;width:360px;left:-70px;top:90px;opacity:.07;transform:rotate(-14deg)" fill="#fff"><rect x="70" y="32" width="160" height="16" rx="8"></rect><rect x="218" y="27" width="24" height="26" rx="5"></rect><rect x="14" y="42" width="140" height="34" rx="13"></rect><rect x="72" y="22" width="60" height="10" rx="4"></rect><rect x="34" y="70" width="22" height="42" rx="8" transform="rotate(-12 45 90)"></rect><circle cx="108" cy="84" r="19"></circle><rect x="150" y="70" width="8" height="18" rx="4"></rect></svg><svg viewBox="0 0 250 120" style="position:absolute;pointer-events:none;width:420px;right:-90px;top:45%;opacity:.06;transform:rotate(10deg) scaleX(-1)" fill="#fff"><rect x="70" y="32" width="160" height="16" rx="8"></rect><rect x="218" y="27" width="24" height="26" rx="5"></rect><rect x="14" y="42" width="140" height="34" rx="13"></rect><rect x="72" y="22" width="60" height="10" rx="4"></rect><rect x="34" y="70" width="22" height="42" rx="8" transform="rotate(-12 45 90)"></rect><circle cx="108" cy="84" r="19"></circle><rect x="150" y="70" width="8" height="18" rx="4"></rect></svg><svg viewBox="0 0 250 120" style="position:absolute;pointer-events:none;width:300px;left:12%;bottom:40px;opacity:.06;transform:rotate(-6deg)" fill="#fff"><rect x="70" y="32" width="160" height="16" rx="8"></rect><rect x="218" y="27" width="24" height="26" rx="5"></rect><rect x="14" y="42" width="140" height="34" rx="13"></rect><rect x="72" y="22" width="60" height="10" rx="4"></rect><rect x="34" y="70" width="22" height="42" rx="8" transform="rotate(-12 45 90)"></rect><circle cx="108" cy="84" r="19"></circle><rect x="150" y="70" width="8" height="18" rx="4"></rect></svg><svg viewBox="0 0 250 120" style="position:absolute;pointer-events:none;width:340px;right:-60px;top:110px;opacity:.07;transform:rotate(18deg) scaleX(-1)" fill="#fff"><rect x="70" y="32" width="160" height="16" rx="8"></rect><rect x="218" y="27" width="24" height="26" rx="5"></rect><rect x="14" y="42" width="140" height="34" rx="13"></rect><rect x="72" y="22" width="60" height="10" rx="4"></rect><rect x="34" y="70" width="22" height="42" rx="8" transform="rotate(-12 45 90)"></rect><circle cx="108" cy="84" r="19"></circle><rect x="150" y="70" width="8" height="18" rx="4"></rect></svg><svg viewBox="0 0 250 120" style="position:absolute;pointer-events:none;width:300px;right:6%;bottom:60px;opacity:.06;transform:rotate(-10deg) scaleX(-1)" fill="#fff"><rect x="70" y="32" width="160" height="16" rx="8"></rect><rect x="218" y="27" width="24" height="26" rx="5"></rect><rect x="14" y="42" width="140" height="34" rx="13"></rect><rect x="72" y="22" width="60" height="10" rx="4"></rect><rect x="34" y="70" width="22" height="42" rx="8" transform="rotate(-12 45 90)"></rect><circle cx="108" cy="84" r="19"></circle><rect x="150" y="70" width="8" height="18" rx="4"></rect></svg><svg viewBox="0 0 250 120" style="position:absolute;pointer-events:none;width:260px;left:38%;top:70px;opacity:.05;transform:rotate(8deg)" fill="#fff"><rect x="70" y="32" width="160" height="16" rx="8"></rect><rect x="218" y="27" width="24" height="26" rx="5"></rect><rect x="14" y="42" width="140" height="34" rx="13"></rect><rect x="72" y="22" width="60" height="10" rx="4"></rect><rect x="34" y="70" width="22" height="42" rx="8" transform="rotate(-12 45 90)"></rect><circle cx="108" cy="84" r="19"></circle><rect x="150" y="70" width="8" height="18" rx="4"></rect></svg>
+<div style="position:absolute;border-radius:50%;background:#fff;opacity:0.05;width:120px;height:120px;right:-30px;top:30%">
+</div>
+<div style="position:absolute;border-radius:50%;background:#fff;opacity:0.06;width:60px;height:60px;right:12%;top:22%">
+</div>
+<div style="position:absolute;border-radius:50%;background:#fff;opacity:0.07;width:34px;height:34px;right:5%;top:62%">
+</div>
+<div style="position:absolute;border-radius:50%;background:#fff;opacity:0.05;width:80px;height:80px;left:-20px;top:55%">
+</div>
+</div>
+<div style="max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 var(--padx);position:relative">
+<div style="text-align:center;margin-bottom:14px">
+<div style="display:inline-block;background:#0875D1;color:#fff;font-weight:700;font-size:14px;letter-spacing:.04em;padding:8px 16px;border-radius:999px;text-transform:uppercase">Coming Soon</div>
+</div>
+<h2 style="text-shadow:0 3px 6px rgba(10,20,38,.45);font-family:'Archivo Black',sans-serif;font-size:clamp(34px,6vw,60px);text-transform:uppercase;margin:0 0 36px;line-height:1;text-align:center">See the <span style="color:#FF7518">Battlefield</span></h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px">
+<div style="aspect-ratio:4/3;border-radius:22px;background:repeating-linear-gradient(135deg,#dbeafe 0 16px,#c7dcf3 16px 32px);display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.5;color:#182B49">
+<div style="font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;color:#0875D1">Coming Soon</div>
+</div>
+<div style="aspect-ratio:4/3;border-radius:22px;background:repeating-linear-gradient(135deg,#dbeafe 0 16px,#c7dcf3 16px 32px);display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.5;color:#182B49">
+<div style="font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;color:#0875D1">Coming Soon</div>
+</div>
+<div style="aspect-ratio:4/3;border-radius:22px;background:repeating-linear-gradient(135deg,#dbeafe 0 16px,#c7dcf3 16px 32px);display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.5;color:#182B49">
+<div style="font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;color:#0875D1">Coming Soon</div>
+</div>
+<div style="aspect-ratio:4/3;border-radius:22px;background:repeating-linear-gradient(135deg,#dbeafe 0 16px,#c7dcf3 16px 32px);display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.5;color:#182B49">
+<div style="font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;color:#0875D1">Coming Soon</div>
+</div>
+<div style="aspect-ratio:4/3;border-radius:22px;background:repeating-linear-gradient(135deg,#dbeafe 0 16px,#c7dcf3 16px 32px);display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.5;color:#182B49">
+<div style="font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;color:#0875D1">Coming Soon</div>
+</div>
+<div style="aspect-ratio:4/3;border-radius:22px;background:repeating-linear-gradient(135deg,#dbeafe 0 16px,#c7dcf3 16px 32px);display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.5;color:#182B49">
+<div style="font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;color:#0875D1">Coming Soon</div>
+</div>
+</div>
+</div>
+</section>
+<!-- REVIEWS -->
+<section id="reviews" style="background:#fff;padding:72px 0">
+<div style="max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 var(--padx);text-align:center">
+<div style="text-align:center;margin-bottom:14px">
+<div style="display:inline-block;background:#0875D1;color:#fff;font-weight:700;font-size:14px;letter-spacing:.04em;padding:8px 16px;border-radius:999px;text-transform:uppercase">Coming Soon</div>
+</div>
+<h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(34px,6vw,60px);text-transform:uppercase;margin:0 0 36px;line-height:1">What Parents <span style="color:#FF7518">Are Saying</span></h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px;text-align:left;margin-bottom:36px">
+<div style="background:#F3F4F6;border-radius:22px;padding:28px;display:flex;align-items:center;justify-content:center;min-height:200px">
+<div style="font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;color:#0875D1">Coming Soon</div>
+</div>
+<div style="background:#F3F4F6;border-radius:22px;padding:28px;display:flex;align-items:center;justify-content:center;min-height:200px">
+<div style="font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;color:#0875D1">Coming Soon</div>
+</div>
+<div style="background:#F3F4F6;border-radius:22px;padding:28px;display:flex;align-items:center;justify-content:center;min-height:200px">
+<div style="font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;color:#0875D1">Coming Soon</div>
+</div>
+</div>
+<a href="/reviews/" style="display:inline-block;background:#FF7518;color:#182B49;font-weight:800;text-decoration:none;padding:16px 28px;border-radius:14px;font-size:18px;text-transform:uppercase">Leave Us a Review</a>
+</div>
+</section>
+<!-- FAQ -->
+<section id="faq" style="background:#F3F4F6;padding:72px 0">
+<div style="max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 var(--padx)">
+<div style="text-align:center;margin-bottom:14px">
+<div style="display:inline-block;background:#0875D1;color:#fff;font-weight:700;font-size:14px;letter-spacing:.04em;padding:8px 16px;border-radius:999px;text-transform:uppercase">Got Questions?</div>
+</div>
+<h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(34px,6vw,60px);text-transform:uppercase;margin:0 0 32px;line-height:1;text-align:center"> <span style="color:#FF7518">FAQ</span></h2>
+<div style="display:flex;flex-direction:column;gap:12px" data-accordion="single">
+<div style="background:#fff;border-radius:18px;overflow:hidden">
+<button type="button" data-acc-toggle aria-expanded="true" style="width:100%;cursor:pointer;border:0;background:transparent;font-family:inherit;color:#182B49;text-align:left;padding:20px 22px;font-weight:800;font-size:18px;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:64px"><span>What's the difference between DIY and full service?</span><span style="flex:none;width:32px;height:32px;border-radius:50%;background:#0875D1;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px" data-acc-icon aria-hidden="true">–</span></button>
+<div data-acc-panel style="display:block;padding:0 22px 22px;font-size:18px;line-height:1.55">With DIY, you rent the gear and run the games yourself. With full service, we bring everything, set up the battlefield, referee 90 minutes of games and clean up afterward.</div>
+</div>
+<div style="background:#fff;border-radius:18px;overflow:hidden">
+<button type="button" data-acc-toggle aria-expanded="false" style="width:100%;cursor:pointer;border:0;background:transparent;font-family:inherit;color:#182B49;text-align:left;padding:20px 22px;font-weight:800;font-size:18px;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:64px"><span>What comes with each blaster?</span><span style="flex:none;width:32px;height:32px;border-radius:50%;background:#0875D1;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px" data-acc-icon aria-hidden="true">+</span></button>
+<div data-acc-panel style="display:none;padding:0 22px 22px;font-size:18px;line-height:1.55">Every blaster includes a pair of protective goggles and 80 foam rounds.</div>
+</div>
+<div style="background:#fff;border-radius:18px;overflow:hidden">
+<button type="button" data-acc-toggle aria-expanded="false" style="width:100%;cursor:pointer;border:0;background:transparent;font-family:inherit;color:#182B49;text-align:left;padding:20px 22px;font-weight:800;font-size:18px;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:64px"><span>How long is a DIY rental?</span><span style="flex:none;width:32px;height:32px;border-radius:50%;background:#0875D1;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px" data-acc-icon aria-hidden="true">+</span></button>
+<div data-acc-panel style="display:none;padding:0 22px 22px;font-size:18px;line-height:1.55">DIY rentals are for 24 hours.</div>
+</div>
+<div style="background:#fff;border-radius:18px;overflow:hidden">
+<button type="button" data-acc-toggle aria-expanded="false" style="width:100%;cursor:pointer;border:0;background:transparent;font-family:inherit;color:#182B49;text-align:left;padding:20px 22px;font-weight:800;font-size:18px;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:64px"><span>Do you deliver?</span><span style="flex:none;width:32px;height:32px;border-radius:50%;background:#0875D1;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px" data-acc-icon aria-hidden="true">+</span></button>
+<div data-acc-panel style="display:none;padding:0 22px 22px;font-size:18px;line-height:1.55">Yes. Pickup in Forsyth is free. DIY delivery is $50 for the first 15 miles, plus $4 for each additional mile. Full-service parties have their own travel fee.</div>
+</div>
+<div style="background:#fff;border-radius:18px;overflow:hidden">
+<button type="button" data-acc-toggle aria-expanded="false" style="width:100%;cursor:pointer;border:0;background:transparent;font-family:inherit;color:#182B49;text-align:left;padding:20px 22px;font-weight:800;font-size:18px;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:64px"><span>How do I reserve my date?</span><span style="flex:none;width:32px;height:32px;border-radius:50%;background:#0875D1;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px" data-acc-icon aria-hidden="true">+</span></button>
+<div data-acc-panel style="display:none;padding:0 22px 22px;font-size:18px;line-height:1.55">DIY rentals need 50% at booking, and the rest is due at pickup or delivery. You can book and pay securely online.</div>
+</div>
+<div style="background:#fff;border-radius:18px;overflow:hidden">
+<button type="button" data-acc-toggle aria-expanded="false" style="width:100%;cursor:pointer;border:0;background:transparent;font-family:inherit;color:#182B49;text-align:left;padding:20px 22px;font-weight:800;font-size:18px;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:64px"><span>Do I need to sign anything?</span><span style="flex:none;width:32px;height:32px;border-radius:50%;background:#0875D1;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px" data-acc-icon aria-hidden="true">+</span></button>
+<div data-acc-panel style="display:none;padding:0 22px 22px;font-size:18px;line-height:1.55">Yes. Every rental includes a rental agreement and safety waiver you can sign online before your party.</div>
+</div>
+<div style="background:#fff;border-radius:18px;overflow:hidden">
+<button type="button" data-acc-toggle aria-expanded="false" style="width:100%;cursor:pointer;border:0;background:transparent;font-family:inherit;color:#182B49;text-align:left;padding:20px 22px;font-weight:800;font-size:18px;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:64px"><span>What areas do you serve?</span><span style="flex:none;width:32px;height:32px;border-radius:50%;background:#0875D1;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px" data-acc-icon aria-hidden="true">+</span></button>
+<div data-acc-panel style="display:none;padding:0 22px 22px;font-size:18px;line-height:1.55">We're based in Forsyth, Missouri and serve Branson, Springfield and communities across Southwest Missouri.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FINAL CTA -->
+<section id="book" style="position:relative;color:#fff;padding:calc(80px + clamp(40px,5vw,84px)) 0 80px;text-align:left;z-index:1">
+<div style="position:absolute;left:0;right:0;top:calc(-1 * clamp(40px,5vw,84px));bottom:0;background:#0875D1;overflow:hidden;pointer-events:none;-webkit-mask:url(/images/cloud-mask-up.png) top/100% clamp(40px,5vw,84px) no-repeat,linear-gradient(#000,#000) bottom/100% calc(100% - clamp(40px,5vw,84px) + 4px) no-repeat;mask:url(/images/cloud-mask-up.png) top/100% clamp(40px,5vw,84px) no-repeat,linear-gradient(#000,#000) bottom/100% calc(100% - clamp(40px,5vw,84px) + 4px) no-repeat"><img src="/images/foam-lineart.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:invert(1);mix-blend-mode:screen;opacity:.16">
+</div>
+<div style="position:relative;max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 var(--padx)">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:40px;align-items:center;text-align:left">
+<div style="display:flex;flex-direction:column;align-items:flex-start;gap:0">
+<h2 style="text-shadow:0 3px 6px rgba(10,20,38,.45);font-family:'Archivo Black',sans-serif;font-size:clamp(34px,6vw,60px);text-transform:uppercase;margin:0 0 16px;line-height:1;text-wrap:balance">Ready for the Ultimate <span style="color:#FF7518">Foam Battle?</span></h2>
+<p style="font-size:18px;margin:0 0 28px;line-height:1.5">Book your DIY rental or full-service party today.</p>
+<div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:32px"><a href="/build-your-party/" style="background:#FF7518;color:#182B49;font-weight:800;text-decoration:none;padding:16px 28px;border-radius:14px;font-size:18px;text-transform:uppercase">Book Your Party</a><a href="tel:+14175592347" style="background:#fff;color:#182B49;font-weight:800;text-decoration:none;padding:16px 28px;border-radius:14px;font-size:18px">Call or Text (417) 559-2347</a>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px;padding-top:24px;border-top:1px solid rgba(255,255,255,.35);width:100%">
+<div style="font-size:18px;line-height:1.45"><span style="font-weight:700;opacity:.9">Email</span><br><a href="mailto:joshuaenglish72@gmail.com" style="color:#fff;font-weight:800;text-decoration:none">joshuaenglish72@gmail.com</a>
+</div>
+<div style="font-size:18px;line-height:1.45"><span style="font-weight:700;opacity:.9">Based in</span><br>Forsyth, Missouri</div>
+<div style="font-size:18px;line-height:1.45"><span style="font-weight:700;opacity:.9">Serving</span><br>Branson, Springfield and Southwest Missouri</div>
+</div>
+</div>
+<div style="background:#fff;color:#182B49;border-radius:28px;padding:28px 20px 28px 28px;text-align:left">
+<h3 style="font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;margin:0 0 16px;color:#182B49">Request Your Party</h3>
+<div style="max-height:460px;overflow-y:auto;padding:4px 4px 4px 0;overscroll-behavior:contain">
+<form data-form style="display:flex;flex-direction:column;gap:18px;padding-right:8px">
+<label style="display:flex;flex-direction:column;gap:8px;min-width:0"><span style="font-weight:800;font-size:18px">Full Name<span style="color:#FF7518">*</span></span><input name="name" type="text" required autocomplete="name" style="width:100%;box-sizing:border-box;height:56px;border:2px solid #d5dbe5;border-radius:14px;padding:0 16px;font-family:inherit;font-size:18px;color:#182B49;background:#fff"></label>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px">
+<label style="display:flex;flex-direction:column;gap:8px;min-width:0"><span style="font-weight:800;font-size:18px">Phone<span style="color:#FF7518">*</span></span><input name="phone" type="tel" required autocomplete="tel" style="width:100%;box-sizing:border-box;height:56px;border:2px solid #d5dbe5;border-radius:14px;padding:0 16px;font-family:inherit;font-size:18px;color:#182B49;background:#fff"></label>
+<label style="display:flex;flex-direction:column;gap:8px;min-width:0"><span style="font-weight:800;font-size:18px">Email<span style="color:#FF7518">*</span></span><input name="email" type="email" required autocomplete="email" style="width:100%;box-sizing:border-box;height:56px;border:2px solid #d5dbe5;border-radius:14px;padding:0 16px;font-family:inherit;font-size:18px;color:#182B49;background:#fff"></label>
+</div>
+<fieldset style="border:0;margin:0;padding:0;min-width:0"><legend style="padding:0;margin-bottom:8px"><span style="font-weight:800;font-size:18px">Preferred Contact Method<span style="color:#FF7518">*</span></span></legend>
+<div style="display:flex;flex-wrap:wrap;gap:10px">
+<label style="display:flex;align-items:center;gap:10px;background:#F3F4F6;border-radius:999px;padding:12px 18px;font-size:18px;font-weight:700;cursor:pointer;color:#182B49"><input type="radio" name="contact_method" value="Text" required style="width:20px;height:20px;margin:0;accent-color:#0875D1">Text</label>
+<label style="display:flex;align-items:center;gap:10px;background:#F3F4F6;border-radius:999px;padding:12px 18px;font-size:18px;font-weight:700;cursor:pointer;color:#182B49"><input type="radio" name="contact_method" value="Call" required style="width:20px;height:20px;margin:0;accent-color:#0875D1">Call</label>
+<label style="display:flex;align-items:center;gap:10px;background:#F3F4F6;border-radius:999px;padding:12px 18px;font-size:18px;font-weight:700;cursor:pointer;color:#182B49"><input type="radio" name="contact_method" value="Email" required style="width:20px;height:20px;margin:0;accent-color:#0875D1">Email</label>
+</div></fieldset>
+<fieldset style="border:0;margin:0;padding:0;min-width:0"><legend style="padding:0;margin-bottom:8px"><span style="font-weight:800;font-size:18px">Party Type<span style="color:#FF7518">*</span></span></legend>
+<div style="display:flex;flex-wrap:wrap;gap:10px">
+<label style="display:flex;align-items:center;gap:10px;background:#F3F4F6;border-radius:999px;padding:12px 18px;font-size:18px;font-weight:700;cursor:pointer;color:#182B49"><input type="radio" name="party_type" value="DIY Equipment Rental" required style="width:20px;height:20px;margin:0;accent-color:#0875D1">DIY Equipment Rental</label>
+<label style="display:flex;align-items:center;gap:10px;background:#F3F4F6;border-radius:999px;padding:12px 18px;font-size:18px;font-weight:700;cursor:pointer;color:#182B49"><input type="radio" name="party_type" value="Full-Service Party" required style="width:20px;height:20px;margin:0;accent-color:#0875D1">Full-Service Party</label>
+<label style="display:flex;align-items:center;gap:10px;background:#F3F4F6;border-radius:999px;padding:12px 18px;font-size:18px;font-weight:700;cursor:pointer;color:#182B49"><input type="radio" name="party_type" value="Not Sure Yet" required style="width:20px;height:20px;margin:0;accent-color:#0875D1">Not Sure Yet</label>
+</div></fieldset>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px">
+<label style="display:flex;flex-direction:column;gap:8px;min-width:0"><span style="font-weight:800;font-size:18px">Event Date</span><input name="event_date" type="date" style="width:100%;box-sizing:border-box;height:56px;border:2px solid #d5dbe5;border-radius:14px;padding:0 16px;font-family:inherit;font-size:18px;color:#182B49;background:#fff"></label>
+<label style="display:flex;flex-direction:column;gap:8px;min-width:0"><span style="font-weight:800;font-size:18px">Number of Participants</span><input name="participants" type="number" min="1" style="width:100%;box-sizing:border-box;height:56px;border:2px solid #d5dbe5;border-radius:14px;padding:0 16px;font-family:inherit;font-size:18px;color:#182B49;background:#fff"></label>
+</div>
+<label style="display:flex;flex-direction:column;gap:8px;min-width:0"><span style="font-weight:800;font-size:18px">Event City or Address</span><input name="event_location" type="text" autocomplete="street-address" style="width:100%;box-sizing:border-box;height:56px;border:2px solid #d5dbe5;border-radius:14px;padding:0 16px;font-family:inherit;font-size:18px;color:#182B49;background:#fff"></label>
+<label style="display:flex;flex-direction:column;gap:8px;min-width:0"><span style="font-weight:800;font-size:18px">Message</span><textarea name="message" rows="4" style="width:100%;box-sizing:border-box;height:56px;border:2px solid #d5dbe5;border-radius:14px;padding:0 16px;font-family:inherit;font-size:18px;color:#182B49;background:#fff;height:auto;padding:14px 16px;resize:vertical"></textarea></label>
+<button type="submit" style="cursor:pointer;border:0;font-family:inherit;background:#FF7518;color:#182B49;font-weight:800;text-align:center;padding:16px 28px;border-radius:14px;font-size:18px;text-transform:uppercase">Send My Request</button>
+<p style="margin:0;font-size:18px;line-height:1.5">We'll get back to you as soon as possible. Need a faster answer? Text us at <a href="tel:+14175592347" style="color:#0875D1;font-weight:800;text-decoration:none">(417) 559-2347</a>.</p>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+</Base>
