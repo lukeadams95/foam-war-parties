@@ -22,5 +22,5 @@ npm run build    # static output in dist/, deploy to any static host
 - **Forms:** set `PUBLIC_FORM_ENDPOINT` (a Formspree URL, for example) at build time. Until it's set, forms check required fields and then tell visitors to call or text.
 - **Domain:** `site` in `astro.config.mjs` is `https://foambattleparties.com`, the domain in the original brief. Change it if the site launches under a Foam War Parties domain.
 - **Google review link:** on `/reviews/`, replace the `href="#"` placeholder that is marked `data-todo`.
-- **Build Your Party:** `/build-your-party/` is a placeholder, as in the design, and is set to `noindex`. Links keep `?type=diy` or `?type=full` for when the calculator is built.
+- **Build Your Party:** `/build-your-party/` is a price calculator (pricing rules in `src/lib/pricing.ts`). **Continue to Booking** opens `/contact/` with the party type, participants and the estimate prefilled. There is no booking calendar or online payment yet.
 - **Copy and photos:** the open items from the design chats still apply. They are the cancellation policy, photo rights, and the attorney review of the Terms.

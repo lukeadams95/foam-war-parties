@@ -60,6 +60,20 @@ document.querySelectorAll<HTMLElement>('[data-acc-toggle]').forEach((btn) => {
 // Set PUBLIC_FORM_ENDPOINT (e.g. a Formspree URL) at build time to deliver submissions.
 // Until then, required fields are still validated and visitors are pointed to the phone number.
 const FORM_ENDPOINT: string = import.meta.env.PUBLIC_FORM_ENDPOINT || '';
+
+// Prefill form fields from the URL (Build Your Party's "Continue to Booking" link),
+// e.g. /contact/?party_type=Full-Service%20Party&participants=20&message=...
+const prefill = new URLSearchParams(location.search);
+if ([...prefill.keys()].length) {
+  document.querySelectorAll<HTMLFormElement>('form[data-form]').forEach((form) => {
+    prefill.forEach((value, key) => {
+      form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>(`[name="${CSS.escape(key)}"]`).forEach((el) => {
+        if (el instanceof HTMLInputElement && (el.type === 'radio' || el.type === 'checkbox')) el.checked = el.value === value;
+        else el.value = value;
+      });
+    });
+  });
+}
 document.querySelectorAll<HTMLFormElement>('form[data-form]').forEach((form) => {
   const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]');
   const status = document.createElement('p');

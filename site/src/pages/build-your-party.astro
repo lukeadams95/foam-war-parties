@@ -1,12 +1,399 @@
 ---
 import Base from '../layouts/Base.astro';
+import CloudTop from '../components/CloudTop.astro';
+import { DIY, FULL } from '../lib/pricing';
+
+const stepper = (name: string, label: string, min: number, value: number, max = 500) => ({ name, label, min, value, max });
+const diyAddOns = [
+  { ...stepper('barriers', 'Inflatable battlefield barriers', 0, 0, 100), price: `$${DIY.barrier} each` },
+  { ...stepper('cones', 'Boundary cones', 0, 0, 200), price: `$${DIY.cone.toFixed(2)} each` },
+  { ...stepper('whistles', 'Whistles', 0, 0, 100), price: `$${DIY.whistle.toFixed(2)} each (yours to keep)` },
+];
+const packages = [
+  { key: 'standard', name: FULL.standard.name, price: '$350', who: 'Up to 12 participants' },
+  { key: 'ultimate', name: FULL.ultimate.name, price: '$450', who: '13–24 participants' },
+  { key: 'mega', name: FULL.mega.name, price: '$450 + $12', who: 'per participant over 24' },
+];
 ---
-<Base title="Build Your Foam War Party | Foam War Parties" description="Build your DIY rental or full-service foam war party." active={null} noindex>
-<section style="position:relative;background:#182B49;color:#fff;padding:20px 0 36px;overflow:hidden;min-height:300px;display:flex;align-items:center"><img src="/images/foam-lineart.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:invert(1);mix-blend-mode:screen;opacity:.13">
-<div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 50% 38%,rgba(14,26,46,.92) 0%,rgba(14,26,46,.6) 55%,rgba(14,26,46,0) 100%)">
-</div>
-<div style="position:relative;max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 var(--padx);text-align:center">
-<h1 style="font-family:'Archivo Black',sans-serif;font-size:clamp(40px,7vw,64px);line-height:1;margin:0;text-transform:uppercase;color:#FF7518;text-shadow:0 3px 6px rgba(10,20,38,.6)">Build Your Party</h1>
-</div>
+<Base title="Build Your Foam War Party | Foam War Parties" description="Price your DIY foam blaster rental or full-service foam war party in a minute, then send us your details to lock in your date." active={null}>
+
+<section style="position:relative;background:#182B49;color:#fff;padding:20px 0 36px;overflow:hidden;min-height:300px;display:flex;align-items:center">
+  <img src="/images/foam-lineart.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:invert(1);mix-blend-mode:screen;opacity:.13">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 50% 38%,rgba(14,26,46,.92) 0%,rgba(14,26,46,.6) 55%,rgba(14,26,46,0) 100%)"></div>
+  <div style="position:relative;max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 var(--padx);text-align:center">
+    <h1 style="font-family:'Archivo Black',sans-serif;font-size:clamp(40px,7vw,64px);line-height:1;margin:0 0 14px;text-transform:uppercase;text-shadow:0 3px 6px rgba(10,20,38,.6)">Build Your <span style="color:#FF7518;text-shadow:0 0 6px rgba(255,117,24,.28),0 0 12px rgba(255,117,24,.16)">Foam War Party</span></h1>
+    <p style="font-size:clamp(18px,2.4vw,24px);max-width:720px;margin:0 auto;line-height:1.4;text-wrap:pretty;text-shadow:0 2px 6px rgba(10,20,38,.85),0 0 16px rgba(10,20,38,.7)">Price your party in a minute, then send us your details to lock in your date.</p>
+  </div>
 </section>
+
+<section class="byp" data-builder>
+  <div class="wrap">
+    <div class="center"><span class="eyebrow">Step 1</span></div>
+    <h2 class="h2">Pick Your <span>Party</span></h2>
+
+    <fieldset class="choices">
+      <legend class="sr-only">Party type</legend>
+      <label class="choice" style="--c:#0875D1">
+        <input type="radio" name="type" value="diy" checked>
+        <span class="choice-title">DIY Equipment Rentals</span>
+        <span class="choice-price"><small>Starting at</small>$54</span>
+        <span class="choice-text">Rent the equipment, organize your own games and create your own battlefield.</span>
+        <span class="choice-check" aria-hidden="true">✓</span>
+      </label>
+      <label class="choice" style="--c:#FF7518">
+        <input type="radio" name="type" value="full">
+        <span class="choice-title">Full-Service Parties</span>
+        <span class="choice-price"><small>Starting at</small>$350</span>
+        <span class="choice-text">We deliver the equipment, set up the battlefield, referee the games and handle cleanup.</span>
+        <span class="choice-check" aria-hidden="true">✓</span>
+      </label>
+    </fieldset>
+
+    <div class="center" style="margin-top:56px"><span class="eyebrow">Step 2</span></div>
+    <h2 class="h2">Build Your <span>Battle</span></h2>
+
+    <div class="layout">
+      <div class="builder">
+        <!-- DIY -->
+        <div data-panel="diy" class="stack">
+          <div class="card" style="--c:#0875D1">
+            <CloudTop color="#0875D1" />
+            <h3 class="h3">Blasters</h3>
+            <p class="muted">The Basic Blaster Package is 12 blasters for $54. Add more for $4 each. Every blaster comes with protective goggles and 80 foam rounds.</p>
+            <div class="row">
+              <div><div class="row-label">Foam-ball blasters</div><div class="row-sub">12 minimum · 24-hour rental</div></div>
+              <div class="stepper" data-stepper>
+                <button type="button" data-dec aria-label="Fewer blasters">−</button>
+                <input type="number" inputmode="numeric" name="blasters" min="12" max="200" value="12" aria-label="Foam-ball blasters">
+                <button type="button" data-inc aria-label="More blasters">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="--c:#0875D1">
+            <CloudTop color="#0875D1" />
+            <h3 class="h3">Specialty Blaster Upgrades</h3>
+            <p class="muted">Swap any standard blaster for a specialty blaster. Standard blasters are included.</p>
+            {[['tier1', 'Specialty Tier 1', '+$1 each'], ['tier2', 'Specialty Tier 2', '+$2 each']].map(([n, l, p]) => (
+              <div class="row">
+                <div><div class="row-label">{l}</div><div class="row-sub">{p}</div></div>
+                <div class="stepper" data-stepper>
+                  <button type="button" data-dec aria-label={`Fewer ${l} blasters`}>−</button>
+                  <input type="number" inputmode="numeric" name={n} min="0" max="200" value="0" aria-label={`${l} blasters`}>
+                  <button type="button" data-inc aria-label={`More ${l} blasters`}>+</button>
+                </div>
+              </div>
+            ))}
+            <p class="hint" data-swap-hint hidden></p>
+          </div>
+
+          <div class="card" style="--c:#0875D1">
+            <CloudTop color="#0875D1" />
+            <h3 class="h3">Battlefield Add-Ons</h3>
+            {diyAddOns.map((a) => (
+              <div class="row">
+                <div><div class="row-label">{a.label}</div><div class="row-sub">{a.price}</div></div>
+                <div class="stepper" data-stepper>
+                  <button type="button" data-dec aria-label={`Fewer ${a.label.toLowerCase()}`}>−</button>
+                  <input type="number" inputmode="numeric" name={a.name} min={a.min} max={a.max} value={a.value} aria-label={a.label}>
+                  <button type="button" data-inc aria-label={`More ${a.label.toLowerCase()}`}>+</button>
+                </div>
+              </div>
+            ))}
+            <p class="muted" style="margin:0">Capture-the-flag flags are included with applicable game setups.</p>
+          </div>
+
+          <div class="card" style="--c:#0875D1">
+            <CloudTop color="#0875D1" />
+            <h3 class="h3">Pickup or Delivery</h3>
+            <div class="pills">
+              <label class="pill"><input type="radio" name="handoff" value="pickup" checked>Free pickup in Forsyth</label>
+              <label class="pill"><input type="radio" name="handoff" value="delivery">Delivery</label>
+            </div>
+            <div class="miles" data-diy-miles hidden>
+              <label class="row-label" for="diy-miles">Miles from Forsyth (one way)</label>
+              <div class="miles-input"><input id="diy-miles" type="number" inputmode="numeric" name="diyMiles" min="0" max="300" value="15"><span>miles</span></div>
+              <p class="row-sub" style="margin:0">$50 for the first 15 miles, plus $4 for each additional mile.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full service -->
+        <div data-panel="full" class="stack" hidden>
+          <div class="card" style="--c:#FF7518">
+            <CloudTop color="#FF7518" />
+            <h3 class="h3">Participants</h3>
+            <p class="muted">Every full-service party includes 90 minutes of refereed gameplay, blasters and specialty blasters, goggles, foam ammo, inflatable barriers, organized games, setup and cleanup.</p>
+            <div class="row">
+              <div><div class="row-label">Number of participants</div><div class="row-sub">We pick the package for you</div></div>
+              <div class="stepper" data-stepper>
+                <button type="button" data-dec aria-label="Fewer participants">−</button>
+                <input type="number" inputmode="numeric" name="participants" min="1" max="500" value="12" aria-label="Number of participants">
+                <button type="button" data-inc aria-label="More participants">+</button>
+              </div>
+            </div>
+            <div class="pkgs">
+              {packages.map((p) => (
+                <div class="pkg" data-pkg={p.key}>
+                  <div class="pkg-name">{p.name}</div>
+                  <div class="pkg-price">{p.price}</div>
+                  <div class="row-sub">{p.who}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="card" style="--c:#FF7518">
+            <CloudTop color="#FF7518" />
+            <h3 class="h3">Upgrade</h3>
+            <label class="check">
+              <input type="checkbox" name="extraBarriers">
+              <span><span class="row-label">Add 5 more inflatable barriers</span><span class="row-sub" style="display:block">$75</span></span>
+            </label>
+          </div>
+
+          <div class="card" style="--c:#FF7518">
+            <CloudTop color="#FF7518" />
+            <h3 class="h3">Travel</h3>
+            <div class="miles">
+              <label class="row-label" for="full-miles">Miles from Forsyth (one way)</label>
+              <div class="miles-input"><input id="full-miles" type="number" inputmode="numeric" name="fullMiles" min="0" max="300" value="0"><span>miles</span></div>
+              <p class="row-sub" style="margin:0">Free within 10 miles, then $20 for each additional 10 miles.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <aside class="summary" data-summary aria-labelledby="summary-title">
+        <CloudTop color="#FF7518" />
+        <h3 class="h3" id="summary-title" style="color:#fff">Your Party</h3>
+        <div class="summary-type" data-summary-type>DIY Equipment Rental</div>
+        <ul class="lines" data-lines></ul>
+        <div class="total-row">
+          <span>Estimated total</span>
+          <span class="total" data-total aria-live="polite">$54</span>
+        </div>
+        <div class="deposit" data-deposit>
+          <div><span>Due at booking (50%)</span><b data-due-now>$27</b></div>
+          <div><span>Due at pickup or delivery</span><b data-due-later>$27</b></div>
+        </div>
+        <p class="fine" data-full-note hidden>Full-service payment terms are confirmed at booking.</p>
+        <a class="btn" href="/contact/" data-continue>Continue to Booking</a>
+        <p class="fine">Your price is confirmed when you book. Questions? <a href="tel:+14175592347">Call or text (417) 559-2347</a></p>
+      </aside>
+    </div>
+
+    <noscript><p class="muted center" style="margin-top:24px">The price calculator needs JavaScript. Call or text <a href="tel:+14175592347">(417) 559-2347</a> and we'll price your party for you.</p></noscript>
+  </div>
+</section>
+
+<div class="mbar" data-mbar hidden>
+  <div><span class="mbar-label">Estimated total</span><span class="mbar-total" data-mbar-total>$54</span></div>
+  <a class="btn btn-sm" href="#summary-title">See Summary</a>
+</div>
+
+<section style="position:relative;color:#fff;padding:calc(80px + clamp(40px,5vw,84px)) 0 80px;text-align:center;z-index:1">
+  <div style="position:absolute;left:0;right:0;top:calc(-1 * clamp(40px,5vw,84px));bottom:0;background:#0875D1;overflow:hidden;pointer-events:none;-webkit-mask:url(/images/cloud-mask-up.png) top/100% clamp(40px,5vw,84px) no-repeat,linear-gradient(#000,#000) bottom/100% calc(100% - clamp(40px,5vw,84px) + 4px) no-repeat;mask:url(/images/cloud-mask-up.png) top/100% clamp(40px,5vw,84px) no-repeat,linear-gradient(#000,#000) bottom/100% calc(100% - clamp(40px,5vw,84px) + 4px) no-repeat"><img src="/images/foam-lineart.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:invert(1);mix-blend-mode:screen;opacity:.16"></div>
+  <div style="position:relative;max-width:1200px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 var(--padx)">
+    <h2 style="text-shadow:0 3px 6px rgba(10,20,38,.45);font-family:'Archivo Black',sans-serif;font-size:clamp(34px,6vw,60px);text-transform:uppercase;margin:0 0 16px;line-height:1;text-wrap:balance">Rather Talk It <span style="color:#FF7518">Through?</span></h2>
+    <p style="font-size:18px;margin:0 0 32px;line-height:1.5">Texting is the fastest way to reach us. We're happy to help you plan.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center"><a href="tel:+14175592347" style="background:#FF7518;color:#182B49;font-weight:800;text-decoration:none;padding:16px 28px;border-radius:14px;font-size:18px">Call or Text (417) 559-2347</a><a href="/services/" style="background:#fff;color:#182B49;font-weight:800;text-decoration:none;padding:16px 28px;border-radius:14px;font-size:18px;text-transform:uppercase">See All Pricing</a></div>
+  </div>
+</section>
+
 </Base>
+
+<style>
+  .byp{background:#F3F4F6;color:#182B49;padding:72px 0 clamp(100px,10vw,140px)}
+  .wrap{max-width:1200px;width:100%;margin:0 auto;padding:0 var(--padx)}
+  .center{text-align:center}
+  .eyebrow{display:inline-block;background:#0875D1;color:#fff;font-weight:700;font-size:14px;letter-spacing:.04em;padding:8px 16px;border-radius:999px;text-transform:uppercase}
+  .h2{font-family:'Archivo Black',sans-serif;font-size:clamp(34px,6vw,60px);text-transform:uppercase;margin:14px 0 8px;line-height:1;text-align:center;text-wrap:balance}
+  .h2 span{color:#FF7518}
+  .h3{font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;margin:0}
+  .muted{font-size:18px;line-height:1.5;margin:0}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .choices{border:0;margin:24px auto 0;padding:0;min-width:0;max-width:900px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px}
+  .choice{position:relative;cursor:pointer;background:#fff;border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:10px;border:3px solid transparent;border-top:8px solid var(--c);transition:border-color .2s,box-shadow .2s,transform .2s}
+  .choice:hover{transform:translateY(-3px)}
+  .choice input{position:absolute;opacity:0;pointer-events:none}
+  .choice:has(input:checked){border-color:#FF7518;border-top-color:var(--c);box-shadow:0 10px 28px rgba(10,30,60,.16)}
+  .choice:has(input:focus-visible){outline:3px solid #0875D1;outline-offset:3px}
+  .choice-title{font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase}
+  .choice-price{font-family:'Archivo Black',sans-serif;font-size:44px;color:#0875D1;line-height:1}
+  .choice-price small{font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;color:#182B49;display:block;margin-bottom:4px}
+  .choice-text{font-size:18px;line-height:1.45}
+  .choice-check{position:absolute;top:20px;right:20px;width:36px;height:36px;border-radius:50%;background:#F3F4F6;color:transparent;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px}
+  .choice:has(input:checked) .choice-check{background:#FF7518;color:#182B49}
+
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:32px;align-items:start;margin-top:12px}
+  @media (max-width:999px){.layout{grid-template-columns:minmax(0,1fr)}}
+  .stack{display:flex;flex-direction:column;gap:24px}
+  .stack[hidden]{display:none}
+  .card{position:relative;margin-top:26px;background:#fff;border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:16px;border-top:10px solid var(--c)}
+  .row{display:flex;justify-content:space-between;align-items:center;gap:12px 16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #e3e6eb}
+  .row-label{font-weight:800;font-size:18px}
+  .row-sub{font-size:16px;line-height:1.4}
+  .hint{margin:0;font-size:16px;font-weight:700;background:#fff1e7;border-radius:14px;padding:12px 16px}
+  .hint[hidden]{display:none}
+
+  .stepper{display:inline-flex;align-items:stretch;border:2px solid #d5dbe5;border-radius:14px;overflow:hidden;background:#fff;flex:none}
+  .stepper button{width:48px;height:48px;border:0;background:#F3F4F6;color:#182B49;font-family:inherit;font-size:24px;font-weight:800;cursor:pointer;line-height:1}
+  .stepper button:hover{background:#FF7518}
+  .stepper button:disabled{opacity:.4;cursor:not-allowed;background:#F3F4F6}
+  .stepper input{width:64px;border:0;text-align:center;font-family:inherit;font-size:18px;font-weight:800;color:#182B49;-moz-appearance:textfield;appearance:textfield}
+  .stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+
+  .pills{display:flex;flex-wrap:wrap;gap:10px}
+  .pill{display:flex;align-items:center;gap:10px;background:#F3F4F6;border-radius:999px;padding:12px 18px;font-size:18px;font-weight:700;cursor:pointer}
+  .pill input,.check input{width:20px;height:20px;margin:0;accent-color:#0875D1;flex:none}
+  .check{display:flex;align-items:center;gap:14px;background:#F3F4F6;border-radius:18px;padding:16px 20px;cursor:pointer}
+  .miles{display:flex;flex-direction:column;gap:8px}
+  .miles[hidden]{display:none}
+  .miles-input{display:flex;align-items:center;gap:12px;font-size:18px;font-weight:700}
+  .miles-input input{width:140px;height:56px;border:2px solid #d5dbe5;border-radius:14px;padding:0 16px;font-family:inherit;font-size:18px;color:#182B49;background:#fff}
+
+  .pkgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .pkg{border:2px solid #e3e6eb;border-radius:18px;padding:14px 16px;transition:border-color .2s,background .2s}
+  .pkg.is-active{border-color:#0875D1;background:#e6f1fb}
+  .pkg-name{font-weight:800;font-size:18px}
+  .pkg-price{font-family:'Archivo Black',sans-serif;font-size:26px;color:#0875D1;margin:2px 0}
+
+  .summary{position:sticky;top:calc(var(--sticky-top) + 40px);margin-top:26px;background:#182B49;color:#fff;border-radius:28px;padding:28px;border-top:10px solid #FF7518;display:flex;flex-direction:column;gap:16px}
+  @media (max-width:999px){.summary{position:relative;top:auto}}
+  .summary-type{font-weight:800;font-size:18px;color:#FF7518;margin-top:-6px}
+  .lines{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+  /* List items are created by the script, so they need global (unscoped) rules. */
+  .lines :global(li){display:flex;justify-content:space-between;gap:16px;font-size:17px;line-height:1.4;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.18)}
+  .lines :global(li b){white-space:nowrap}
+  .total-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-weight:800;font-size:18px}
+  .total{font-family:'Archivo Black',sans-serif;font-size:44px;color:#FF7518;line-height:1}
+  .deposit{background:rgba(255,255,255,.08);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;font-size:17px}
+  .deposit[hidden]{display:none}
+  .deposit div{display:flex;justify-content:space-between;gap:12px}
+  .fine{margin:0;font-size:16px;line-height:1.5;opacity:.9}
+  .fine[hidden]{display:none}
+  .fine a{color:#fff;font-weight:700}
+  .btn{display:block;background:#FF7518;color:#182B49;font-weight:800;text-decoration:none;text-align:center;padding:16px 28px;border-radius:14px;font-size:18px;text-transform:uppercase}
+  .btn:hover{color:#182B49;background:#ff8a3d}
+  .btn-sm{padding:12px 18px;font-size:16px}
+
+  .mbar{position:fixed;left:0;right:0;bottom:0;z-index:15;background:#182B49;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px var(--padx) calc(12px + env(safe-area-inset-bottom));box-shadow:0 -6px 18px rgba(10,20,38,.3)}
+  .mbar[hidden]{display:none}
+  @media (min-width:1000px){.mbar{display:none !important}}
+  .mbar-label{display:block;font-size:14px;font-weight:700;opacity:.85}
+  .mbar-total{font-family:'Archivo Black',sans-serif;font-size:28px;color:#FF7518;line-height:1}
+</style>
+
+<script>
+  import { diyQuote, fullQuote, money, type Line } from '../lib/pricing';
+
+  const root = document.querySelector<HTMLElement>('[data-builder]')!;
+  const $ = <T extends Element = HTMLElement>(s: string) => root.querySelector<T>(s)!;
+  const field = (name: string) => root.querySelector<HTMLInputElement>(`[name="${name}"]`)!;
+  const num = (name: string) => Number(field(name).value);
+  const type = () => root.querySelector<HTMLInputElement>('[name="type"]:checked')!.value as 'diy' | 'full';
+
+  // Preselect from /build-your-party/?type=diy|full (homepage and Services buttons).
+  const pre = new URLSearchParams(location.search).get('type');
+  if (pre === 'full' || pre === 'diy') root.querySelector<HTMLInputElement>(`[name="type"][value="${pre}"]`)!.checked = true;
+
+  // Steppers: clamp to min/max and keep +/− buttons in sync.
+  root.querySelectorAll<HTMLElement>('[data-stepper]').forEach((s) => {
+    const input = s.querySelector('input')!;
+    const dec = s.querySelector<HTMLButtonElement>('[data-dec]')!;
+    const inc = s.querySelector<HTMLButtonElement>('[data-inc]')!;
+    const clamp = () => {
+      const min = Number(input.min), max = Number(input.max);
+      let v = Math.round(Number(input.value));
+      if (!Number.isFinite(v)) v = min;
+      input.value = String(Math.min(max, Math.max(min, v)));
+    };
+    const step = (d: number) => { input.value = String(Number(input.value) + d); clamp(); update(); };
+    dec.addEventListener('click', () => step(-1));
+    inc.addEventListener('click', () => step(1));
+    input.addEventListener('change', () => { clamp(); update(); });
+    input.addEventListener('input', update);
+  });
+  root.querySelectorAll('input').forEach((i) => { if (!i.closest('[data-stepper]')) i.addEventListener('input', update); });
+
+  let message = '';
+  function render(lines: Line[]) {
+    $('[data-lines]').replaceChildren(...lines.map((l) => {
+      const li = document.createElement('li');
+      const a = document.createElement('span'); a.textContent = l.label;
+      const b = document.createElement('b'); b.textContent = money(l.amount);
+      li.append(a, b);
+      return li;
+    }));
+  }
+
+  function update() {
+    const t = type();
+    $('[data-panel="diy"]').hidden = t !== 'diy';
+    $('[data-panel="full"]').hidden = t !== 'full';
+    $('[data-deposit]').hidden = t !== 'diy';
+    $('[data-full-note]').hidden = t !== 'full';
+    const params = new URLSearchParams();
+    let total: number;
+
+    if (t === 'diy') {
+      const delivery = root.querySelector<HTMLInputElement>('[name="handoff"]:checked')!.value === 'delivery';
+      $('[data-diy-miles]').hidden = !delivery;
+      const q = diyQuote({ blasters: num('blasters'), tier1: num('tier1'), tier2: num('tier2'), barriers: num('barriers'), cones: num('cones'), whistles: num('whistles'), delivery, miles: num('diyMiles') });
+      const hint = $('[data-swap-hint]');
+      const asked = num('tier1') + num('tier2');
+      hint.hidden = asked <= q.blasters;
+      hint.textContent = `You have ${q.blasters} blasters, so up to ${q.blasters} can be specialty swaps. Add more blasters to swap more.`;
+      render(q.lines);
+      $('[data-summary-type]').textContent = 'DIY Equipment Rental';
+      $('[data-due-now]').textContent = money(q.deposit);
+      $('[data-due-later]').textContent = money(q.balance);
+      total = q.total;
+      params.set('party_type', 'DIY Equipment Rental');
+      message = [
+        'Build Your Party estimate: DIY Equipment Rental',
+        ...q.lines.map((l) => `- ${l.label}: ${money(l.amount)}`),
+        `Estimated total: ${money(q.total)} (50% due at booking: ${money(q.deposit)})`,
+      ].join('\n');
+    } else {
+      const q = fullQuote({ participants: num('participants'), extraBarriers: field('extraBarriers').checked, miles: num('fullMiles') });
+      root.querySelectorAll<HTMLElement>('[data-pkg]').forEach((p) => p.classList.toggle('is-active', p.dataset.pkg === q.pkg.name.split(' ')[0].toLowerCase()));
+      render(q.lines);
+      $('[data-summary-type]').textContent = 'Full-Service Party';
+      total = q.total;
+      params.set('party_type', 'Full-Service Party');
+      params.set('participants', String(q.participants));
+      message = [
+        'Build Your Party estimate: Full-Service Party',
+        ...q.lines.map((l) => `- ${l.label}: ${money(l.amount)}`),
+        `Estimated total: ${money(q.total)}`,
+      ].join('\n');
+    }
+
+    $('[data-total]').textContent = money(total) === 'Free' ? '$0' : money(total);
+    document.querySelector('[data-mbar-total]')!.textContent = $('[data-total]').textContent;
+    params.set('message', message);
+    $<HTMLAnchorElement>('[data-continue]').href = '/contact/?' + params.toString();
+
+    // Keep the URL shareable and in step with the chosen party type.
+    const u = new URL(location.href);
+    u.searchParams.set('type', t);
+    history.replaceState(null, '', u);
+
+    // Disable steppers' − / + at their limits.
+    root.querySelectorAll<HTMLElement>('[data-stepper]').forEach((s) => {
+      const i = s.querySelector('input')!;
+      s.querySelector<HTMLButtonElement>('[data-dec]')!.disabled = Number(i.value) <= Number(i.min);
+      s.querySelector<HTMLButtonElement>('[data-inc]')!.disabled = Number(i.value) >= Number(i.max);
+    });
+  }
+  update();
+
+  // Phone bottom bar: show the running total until the summary card has been reached.
+  const bar = document.querySelector<HTMLElement>('[data-mbar]')!;
+  const summary = $('[data-summary]');
+  new IntersectionObserver(([e]) => { bar.hidden = e.isIntersecting || e.boundingClientRect.top < 0; }).observe(summary);
+</script>

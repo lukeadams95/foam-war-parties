@@ -1,0 +1,12 @@
+---
+// The short foam-cloud edge used on cloud-topped cards across the site (Services, About, Reviews).
+// Place inside a position:relative card with a 10px top border in the same color.
+interface Props { color: string }
+const { color } = Astro.props;
+const offsets = [8, 3, 6, 0, 5, 1, 7, 3, 8];
+---
+<div aria-hidden="true" style="position:absolute;left:30px;right:30px;bottom:calc(100% + 9px);height:18px;overflow:hidden;display:flex;justify-content:center;pointer-events:none">
+  {offsets.map((t, i) => (
+    <div style={`flex:none;width:36px;height:36px;border-radius:50%;background:${color};margin-top:${t}px;${i ? 'margin-left:-8px' : ''}`}></div>
+  ))}
+</div>
