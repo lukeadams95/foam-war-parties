@@ -111,16 +111,11 @@ const packages = [
               <label class="pill"><input type="radio" name="handoff" value="delivery">Delivery</label>
             </div>
             <div class="miles" data-diy-miles hidden>
-              <div class="addr" data-addr data-target="diyMiles">
-                <label class="row-label" for="diy-address">Party address</label>
-                <div class="addr-input">
-                  <input id="diy-address" type="text" name="diyAddress" autocomplete="street-address" placeholder="Street, city, state or ZIP">
-                  <button type="button" class="btn btn-sm" data-addr-go>Calculate miles</button>
-                </div>
-                <p class="row-sub addr-status" data-addr-status aria-live="polite">Enter your address and we'll work out the driving miles from Forsyth.</p>
+              <div class="addr" data-addr>
+                <label class="row-label" for="diy-address">Delivery address</label>
+                <input id="diy-address" class="addr-field" type="text" name="diyAddress" autocomplete="street-address" placeholder="Street, city, state or ZIP" data-addr-input>
+                <p class="row-sub addr-status" data-addr-status aria-live="polite">Enter the address and we'll calculate the driving distance from Forsyth for you.</p>
               </div>
-              <label class="row-label" for="diy-miles">Miles from Forsyth (one way, or type them in)</label>
-              <div class="miles-input"><input id="diy-miles" type="number" inputmode="numeric" name="diyMiles" min="0" max="300" value="15"><span>miles</span></div>
               <p class="row-sub" style="margin:0">$50 for the first 15 miles, plus $4 for each additional mile.</p>
             </div>
           </div>
@@ -163,17 +158,12 @@ const packages = [
           <div class="card" style="--c:#FF7518">
             <CloudTop color="#FF7518" />
             <h3 class="h3">Travel</h3>
-            <div class="miles">
-              <div class="addr" data-addr data-target="fullMiles">
+            <div class="miles" >
+              <div class="addr" data-addr>
                 <label class="row-label" for="full-address">Party address</label>
-                <div class="addr-input">
-                  <input id="full-address" type="text" name="fullAddress" autocomplete="street-address" placeholder="Street, city, state or ZIP">
-                  <button type="button" class="btn btn-sm" data-addr-go>Calculate miles</button>
-                </div>
-                <p class="row-sub addr-status" data-addr-status aria-live="polite">Enter your address and we'll work out the driving miles from Forsyth.</p>
+                <input id="full-address" class="addr-field" type="text" name="fullAddress" autocomplete="street-address" placeholder="Street, city, state or ZIP" data-addr-input>
+                <p class="row-sub addr-status" data-addr-status aria-live="polite">Enter the address and we'll calculate the driving distance from Forsyth for you.</p>
               </div>
-              <label class="row-label" for="full-miles">Miles from Forsyth (one way, or type them in)</label>
-              <div class="miles-input"><input id="full-miles" type="number" inputmode="numeric" name="fullMiles" min="0" max="300" value="0"><span>miles</span></div>
               <p class="row-sub" style="margin:0">Free within 10 miles, then $20 for each additional 10 miles.</p>
             </div>
           </div>
@@ -268,16 +258,13 @@ const packages = [
   .check{display:flex;align-items:center;gap:14px;background:#F3F4F6;border-radius:18px;padding:16px 20px;cursor:pointer}
   .miles{display:flex;flex-direction:column;gap:8px}
   .miles[hidden]{display:none}
-  .miles-input{display:flex;align-items:center;gap:12px;font-size:18px;font-weight:700}
-  .miles-input input{width:140px;height:56px;border:2px solid #d5dbe5;border-radius:14px;padding:0 16px;font-family:inherit;font-size:18px;color:#182B49;background:#fff}
 
   .addr{display:flex;flex-direction:column;gap:8px;padding-bottom:6px}
-  .addr-input{display:flex;flex-wrap:wrap;gap:10px}
-  .addr-input input{flex:1 1 240px;min-width:0;height:56px;border:2px solid #d5dbe5;border-radius:14px;padding:0 16px;font-family:inherit;font-size:18px;color:#182B49;background:#fff;box-sizing:border-box}
-  .addr-input .btn{border:0;cursor:pointer;font-family:inherit;height:56px}
-  .addr-input .btn:disabled{opacity:.6;cursor:wait}
+  .addr-field{width:100%;height:56px;border:2px solid #d5dbe5;border-radius:14px;padding:0 16px;font-family:inherit;font-size:18px;color:#182B49;background:#fff;box-sizing:border-box}
+  .addr-field.is-missing{border-color:#b42318}
   .addr-status{margin:0}
   .addr-status.is-error{color:#b42318;font-weight:700}
+  .addr-status.is-ok{color:#0875D1;font-weight:700}
   .pkgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
   .pkg{border:2px solid #e3e6eb;border-radius:18px;padding:14px 16px;transition:border-color .2s,background .2s}
   .pkg.is-active{border-color:#0875D1;background:#e6f1fb}
@@ -344,10 +331,18 @@ const packages = [
   root.querySelectorAll('input').forEach((i) => { if (!i.closest('[data-stepper]')) i.addEventListener('input', update); });
 
   let message = '';
+  // The party address and its driving distance, shared by the DIY delivery and full-service panels.
+  // miles stays null until the lookup succeeds; status 'failed' means the fee is confirmed by phone instead.
+  const trip: { address: string; miles: number | null; status: 'empty' | 'pending' | 'ok' | 'failed' } = { address: '', miles: null, status: 'empty' };
+  const lbl = (label: string) => (trip.status === 'failed' ? label.replace('(enter your address)', '(to be confirmed)') : label);
+  const tripLines = (label: string) => trip.address
+    ? [`${label}: ${trip.address}`, ...(trip.status === 'failed' ? ['Distance could not be calculated online, please confirm the fee.'] : [])]
+    : [];
   function render(lines: Line[]) {
     $('[data-lines]').replaceChildren(...lines.map((l) => {
       const li = document.createElement('li');
-      const a = document.createElement('span'); a.textContent = l.label;
+      const a = document.createElement('span');
+      a.textContent = lbl(l.label);
       const b = document.createElement('b'); b.textContent = money(l.amount);
       li.append(a, b);
       return li;
@@ -366,7 +361,7 @@ const packages = [
     if (t === 'diy') {
       const delivery = root.querySelector<HTMLInputElement>('[name="handoff"]:checked')!.value === 'delivery';
       $('[data-diy-miles]').hidden = !delivery;
-      const q = diyQuote({ blasters: num('blasters'), tier1: num('tier1'), tier2: num('tier2'), barriers: num('barriers'), cones: num('cones'), whistles: num('whistles'), delivery, miles: num('diyMiles') });
+      const q = diyQuote({ blasters: num('blasters'), tier1: num('tier1'), tier2: num('tier2'), barriers: num('barriers'), cones: num('cones'), whistles: num('whistles'), delivery, miles: trip.miles });
       const hint = $('[data-swap-hint]');
       const asked = num('tier1') + num('tier2');
       hint.hidden = asked <= q.blasters;
@@ -379,12 +374,12 @@ const packages = [
       params.set('party_type', 'DIY Equipment Rental');
       message = [
         'Build Your Party estimate: DIY Equipment Rental',
-        ...q.lines.map((l) => `- ${l.label}: ${money(l.amount)}`),
+        ...q.lines.map((l) => `- ${lbl(l.label)}: ${money(l.amount)}`),
         `Estimated total: ${money(q.total)} (50% due at booking: ${money(q.deposit)})`,
-        ...(delivery && field('diyAddress').value.trim() ? [`Delivery address: ${field('diyAddress').value.trim()}`] : []),
+        ...(delivery ? tripLines('Delivery address') : []),
       ].join('\n');
     } else {
-      const q = fullQuote({ participants: num('participants'), extraBarriers: field('extraBarriers').checked, miles: num('fullMiles') });
+      const q = fullQuote({ participants: num('participants'), extraBarriers: field('extraBarriers').checked, miles: trip.miles });
       root.querySelectorAll<HTMLElement>('[data-pkg]').forEach((p) => p.classList.toggle('is-active', p.dataset.pkg === q.pkg.name.split(' ')[0].toLowerCase()));
       render(q.lines);
       $('[data-summary-type]').textContent = 'Full-Service Party';
@@ -393,14 +388,15 @@ const packages = [
       params.set('participants', String(q.participants));
       message = [
         'Build Your Party estimate: Full-Service Party',
-        ...q.lines.map((l) => `- ${l.label}: ${money(l.amount)}`),
+        ...q.lines.map((l) => `- ${lbl(l.label)}: ${money(l.amount)}`),
         `Estimated total: ${money(q.total)}`,
-        ...(field('fullAddress').value.trim() ? [`Party address: ${field('fullAddress').value.trim()}`] : []),
+        ...tripLines('Party address'),
       ].join('\n');
     }
 
     $('[data-total]').textContent = money(total) === 'Free' ? '$0' : money(total);
     document.querySelector('[data-mbar-total]')!.textContent = $('[data-total]').textContent;
+    if ((t === 'full' || root.querySelector<HTMLInputElement>('[name="handoff"]:checked')!.value === 'delivery') && trip.address) params.set('event_location', trip.address);
     params.set('message', message);
     $<HTMLAnchorElement>('[data-continue]').href = '/contact/?' + params.toString();
 
@@ -418,38 +414,74 @@ const packages = [
   }
   update();
 
-  // Address lookup: fills in the driving miles from Forsyth. The miles box stays editable as a fallback.
-  root.querySelectorAll<HTMLElement>('[data-addr]').forEach((box) => {
-    const input = box.querySelector('input')!;
-    const go = box.querySelector<HTMLButtonElement>('[data-addr-go]')!;
-    const status = box.querySelector<HTMLElement>('[data-addr-status]')!;
-    const target = field(box.dataset.target!);
-    let ctrl: AbortController | undefined;
-    const say = (text: string, error = false) => { status.textContent = text; status.classList.toggle('is-error', error); };
-    async function lookup() {
-      const address = input.value.trim();
-      if (address.length < 4) { say('Please enter your full address, city or ZIP code.', true); input.focus(); return; }
-      ctrl?.abort();
-      ctrl = new AbortController();
-      go.disabled = true;
-      say('Calculating driving distance…');
-      try {
-        const r = await drivingMilesTo(address, ctrl.signal);
-        target.value = String(Math.min(Number(target.max) || Infinity, r.miles));
-        say(`About ${r.miles} driving miles from Forsyth to ${r.place.split(',').slice(0, 3).join(',')}. Added to your total.`);
-        update();
-      } catch (e) {
-        if ((e as Error).name === 'AbortError') return;
-        const msg = (e as Error).message;
-        say(msg === 'notfound'
-          ? "We couldn't find that address. Try adding the city and ZIP code, or type the miles in below."
-          : "We couldn't calculate the distance right now. Please type the miles in below.", true);
-      } finally {
-        go.disabled = false;
+  // Address lookup: works out the driving miles from Forsyth automatically, so visitors never type miles.
+  const addrInputs = [...root.querySelectorAll<HTMLInputElement>('[data-addr-input]')];
+  const statuses = [...root.querySelectorAll<HTMLElement>('[data-addr-status]')];
+  const say = (text: string, tone: '' | 'ok' | 'error' = '') => statuses.forEach((st) => {
+    st.textContent = text;
+    st.classList.toggle('is-error', tone === 'error');
+    st.classList.toggle('is-ok', tone === 'ok');
+  });
+  let ctrl: AbortController | undefined;
+  let timer: number | undefined;
+  let looked = '';
+
+  async function lookup(address: string) {
+    if (address === looked) return;
+    looked = address;
+    ctrl?.abort();
+    clearTimeout(timer);
+    if (address.length < 5) {
+      Object.assign(trip, { miles: null, status: 'empty' });
+      say(address ? 'Keep typing the full address, city or ZIP code.' : "Enter the address and we'll calculate the driving distance from Forsyth for you.");
+      update();
+      return;
+    }
+    ctrl = new AbortController();
+    Object.assign(trip, { miles: null, status: 'pending' });
+    say('Calculating the driving distance from Forsyth…');
+    update();
+    try {
+      const r = await drivingMilesTo(address, ctrl.signal);
+      Object.assign(trip, { miles: r.miles, status: 'ok' });
+      say(`✓ ${r.miles} miles from Forsyth (${r.place.split(',').slice(0, 3).join(',').trim()}). Added to your total.`, 'ok');
+    } catch (e) {
+      if ((e as Error).name === 'AbortError') return;
+      if ((e as Error).message === 'notfound') {
+        Object.assign(trip, { miles: null, status: 'empty' });
+        say("We couldn't find that address. Please add the city and state or ZIP code.", 'error');
+      } else {
+        Object.assign(trip, { miles: null, status: 'failed' });
+        say("We couldn't calculate the distance right now. Continue to booking and we'll confirm the travel fee with you.", 'error');
       }
     }
-    go.addEventListener('click', lookup);
-    input.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); lookup(); } });
+    update();
+  }
+
+  addrInputs.forEach((input) => {
+    const now = () => lookup(input.value.trim());
+    input.addEventListener('input', () => {
+      trip.address = input.value.trim();
+      addrInputs.forEach((o) => { if (o !== input) o.value = input.value; });
+      input.classList.remove('is-missing');
+      clearTimeout(timer);
+      timer = window.setTimeout(now, 1200); // wait for a pause in typing
+    });
+    input.addEventListener('change', now);
+    input.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); now(); } });
+  });
+
+  // Don't go to booking with a delivery or travel fee that hasn't been worked out yet.
+  $('[data-continue]').addEventListener('click', (e) => {
+    const needsTrip = type() === 'full' || root.querySelector<HTMLInputElement>('[name="handoff"]:checked')!.value === 'delivery';
+    if (!needsTrip || trip.status === 'ok' || trip.status === 'failed') return;
+    e.preventDefault();
+    const input = root.querySelector<HTMLInputElement>(`[data-panel="${type()}"] [data-addr-input]`)!;
+    if (trip.status === 'pending') { say('Still calculating your distance, one moment…'); return; }
+    input.classList.add('is-missing');
+    say('Please enter the party address so we can add the travel fee.', 'error');
+    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    input.focus({ preventScroll: true });
   });
 
   // Phone bottom bar: show the running total until the summary card has been reached.

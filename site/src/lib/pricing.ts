@@ -25,7 +25,7 @@ export const FULL = {
 };
 
 const whole = (n: number, min = 0) => Math.max(min, Math.floor(Number.isFinite(n) ? n : 0));
-/** Distances are charged per started mile, measured one way from Forsyth. */
+/** Distances are charged per started mile, measured one way from Forsyth. `null` = address not entered yet. */
 const miles = (n: number) => Math.max(0, Math.ceil(Number.isFinite(n) ? n : 0));
 
 export function blasterPrice(count: number) {
@@ -54,7 +54,7 @@ export function fullTravelFee(distance: number) {
 
 export interface Line { label: string; amount: number }
 
-export interface DiyInput { blasters: number; tier1: number; tier2: number; barriers: number; cones: number; whistles: number; delivery: boolean; miles: number }
+export interface DiyInput { blasters: number; tier1: number; tier2: number; barriers: number; cones: number; whistles: number; delivery: boolean; miles: number | null }
 export function diyQuote(i: DiyInput) {
   const blasters = whole(i.blasters, DIY.baseBlasters);
   const tier1 = Math.min(whole(i.tier1), blasters);
@@ -67,21 +67,24 @@ export function diyQuote(i: DiyInput) {
   if (c) lines.push({ label: `${c} × Boundary cone`, amount: c * DIY.cone });
   if (w) lines.push({ label: `${w} × Whistle`, amount: w * DIY.whistle });
   lines.push(i.delivery
-    ? { label: `Delivery (${miles(i.miles)} miles)`, amount: diyDeliveryFee(i.miles) }
+    ? i.miles === null
+      ? { label: 'Delivery (enter your address)', amount: DIY.deliveryBase }
+      : { label: `Delivery (${miles(i.miles)} miles)`, amount: diyDeliveryFee(i.miles) }
     : { label: 'Pickup in Forsyth', amount: 0 });
   const total = round(lines.reduce((s, l) => s + l.amount, 0));
   const deposit = round(total * DIY.depositRate);
   return { lines, total, deposit, balance: round(total - deposit), tier1, tier2, blasters };
 }
 
-export interface FullInput { participants: number; extraBarriers: boolean; miles: number }
+export interface FullInput { participants: number; extraBarriers: boolean; miles: number | null }
 export function fullQuote(i: FullInput) {
   const participants = whole(i.participants, 1);
   const pkg = fullPackage(participants);
   const lines: Line[] = [{ label: `${pkg.name} (${participants} participant${participants === 1 ? '' : 's'})`, amount: pkg.price }];
   if (i.extraBarriers) lines.push({ label: `${FULL.barrierUpgrade.count} extra inflatable barriers`, amount: FULL.barrierUpgrade.price });
-  const fee = fullTravelFee(i.miles);
-  lines.push({ label: `Travel fee (${miles(i.miles)} miles)`, amount: fee });
+  lines.push(i.miles === null
+    ? { label: 'Travel fee (enter your address)', amount: 0 }
+    : { label: `Travel fee (${miles(i.miles)} miles)`, amount: fullTravelFee(i.miles) });
   return { lines, total: round(lines.reduce((s, l) => s + l.amount, 0)), pkg, participants };
 }
 
