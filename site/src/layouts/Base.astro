@@ -26,6 +26,7 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : un
     <meta name="description" content={description}>
     {canonical && <link rel="canonical" href={canonical}>}
     {noindex && <meta name="robots" content="noindex">}
+    <meta name="google-site-verification" content="2ko69qHOa3rgD_U3VMUUAJhu-74nWTctSG9JxR8Ech8" />
     <meta property="og:type" content="website">
     <meta property="og:title" content={title}>
     <meta property="og:description" content={description}>
@@ -39,6 +40,13 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : un
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-LD6ER2C5S7"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LD6ER2C5S7');
+    </script>
   </head>
   <body>
     <div style="width:100%;overflow-x:clip;font-family:'DM Sans',sans-serif;color:#182B49">

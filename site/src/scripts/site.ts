@@ -94,8 +94,16 @@ document.querySelectorAll<HTMLFormElement>('form[data-form]').forEach((form) => 
       data.set('page', location.pathname);
       const res = await fetch(FORM_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
       if (!res.ok) throw new Error(String(res.status));
+      let payload: { ok?: boolean } | null = null;
+      try { payload = await res.json(); } catch { payload = null; }
       form.reset();
       say('ok', 'Thanks! Your request is in. We will get back to you as soon as possible.');
+      const gtagFn = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
+      if (payload?.ok === true && typeof gtagFn === 'function') {
+        const path = (location.pathname.replace(/\/+$/, '') || '/');
+        const formName = path === '/' ? 'home' : path === '/contact' ? 'contact' : path === '/birthday-parties' ? 'birthday' : path.replace(/^\//, '');
+        gtagFn('event', 'generate_lead', { form_name: formName });
+      }
     } catch {
       say('warn', 'Something went wrong sending your request. Please call or text (417) 559-2347.');
     } finally {
