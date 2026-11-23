@@ -19,7 +19,7 @@ npm run build    # static output in dist/, deploy to any static host
 
 ## Before launch
 
-- **Forms:** set `PUBLIC_FORM_ENDPOINT` (a Formspree URL, for example) at build time. Until it's set, forms check required fields and then tell visitors to call or text.
+- **Forms:** the contact, homepage and birthday-party forms POST to the Pages Function at `/api/submit`, which emails new requests to the client through Resend. Override the URL with `PUBLIC_FORM_ENDPOINT` at build time only if you need a different endpoint.
 - **Domain:** `site` in `astro.config.mjs` is `https://foambattleparties.com`, the domain in the original brief. Change it if the site launches under a Foam War Parties domain.
 - **Google review link:** on `/reviews/`, replace the `href="#"` placeholder that is marked `data-todo`.
 - **Build Your Party:** `/build-your-party/` is a price calculator (pricing rules in `src/lib/pricing.ts`). **Continue to Booking** opens `/contact/` with the party type, participants and the estimate prefilled. There is no booking calendar or online payment yet.

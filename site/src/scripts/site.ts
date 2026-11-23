@@ -57,9 +57,8 @@ document.querySelectorAll<HTMLElement>('[data-acc-toggle]').forEach((btn) => {
 });
 
 // ---- Forms ----
-// Set PUBLIC_FORM_ENDPOINT (e.g. a Formspree URL) at build time to deliver submissions.
-// Until then, required fields are still validated and visitors are pointed to the phone number.
-const FORM_ENDPOINT: string = import.meta.env.PUBLIC_FORM_ENDPOINT || '';
+// Posts go to the Pages Function at /api/submit. Override with PUBLIC_FORM_ENDPOINT at build time if needed.
+const FORM_ENDPOINT: string = import.meta.env.PUBLIC_FORM_ENDPOINT || '/api/submit';
 
 // Prefill form fields from the URL (Build Your Party's "Continue to Booking" link),
 // e.g. /contact/?party_type=Full-Service%20Party&participants=20&message=...
